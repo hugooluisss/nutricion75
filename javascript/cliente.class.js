@@ -1,13 +1,15 @@
-TArea = function(){
+TCliente = function(){
 	var self = this;
 	
-	this.add = function(id, nombre, incisos, fn){
+	this.add = function(id, nombre, sexo, email, pass, fn){
 		if (fn.before !== undefined) fn.before();
 		
-		$.post('careas', {
+		$.post('cclientes', {
 				"id": id,
 				"nombre": nombre,
-				"incisos": incisos,
+				"sexo": sexo,
+				"email": email,
+				"pass": pass,
 				"action": 'add'
 			}, function(data){
 				if (data.band == 'false')
@@ -19,14 +21,14 @@ TArea = function(){
 	};
 	
 	this.del = function(id, fn){
-		$.post('careas', {
+		$.post('cclientes', {
 			"id": id,
 			"action": "del"
 		}, function(data){
 			if (fn.after != undefined)
 				fn.after(data);
 			if (data.band == 'false'){
-				console.log("Error al eliminar el área");
+				console.log("Error al eliminar al cliente");
 			}
 		}, "json");
 	};

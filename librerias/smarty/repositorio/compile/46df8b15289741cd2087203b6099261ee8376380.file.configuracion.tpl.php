@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-06-24 22:23:35
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-01 11:47:02
          compiled from "templates/plantillas/modulos/configuracion.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1745894857576df8caf0a993-45834583%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '46df8b15289741cd2087203b6099261ee8376380' => 
     array (
       0 => 'templates/plantillas/modulos/configuracion.tpl',
-      1 => 1466825012,
+      1 => 1467391620,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_576df8cb0520a1_56465165',
   'variables' => 
   array (
-    'costoMantenimiento' => 0,
-    'correoGerente' => 0,
+    'suscripcion' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -30,20 +29,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<div class="box-body">
 		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
-			<div class="form-group">
-				<label for="txtCostoMantenimiento" class="col-lg-2">Costo de mantenimiento</label>
+			<!--<div class="form-group">
+				<label for="txtCostoMantenimiento" class="col-lg-2">Costo suscripción</label>
 				<div class="col-lg-3">
-					<input class="form-control text-right" id="txtCostoMantenimiento" name="txtCostoMantenimiento" value="<?php echo $_smarty_tpl->tpl_vars['costoMantenimiento']->value;?>
-" clave="costoMantenimiento" />
+					<input class="form-control text-right" id="txtSuscripcion" name="txtSuscripcion" value="<?php echo $_smarty_tpl->tpl_vars['suscripcion']->value;?>
+" clave="suscripcion" />
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="txtCorreo" class="col-lg-2">Correo gerente</label>
-				<div class="col-lg-3">
-					<input class="form-control" id="txtCorreo" name="txtCorreo" value="<?php echo $_smarty_tpl->tpl_vars['correoGerente']->value;?>
-" clave="correoGerente">
-				</div>
-			</div>
+			</div>-->
 		</form>
 	</div>
 </div><?php }} ?>

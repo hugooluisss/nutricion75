@@ -39,7 +39,7 @@ $bandSesion = true;
 if ($objModulo->requiereSeguridad()){
 
 	if (!isset($sesion['usuario']) or $sesion['usuario'] == ''){
-		echo $sesion['usuario'];
+		#echo $sesion['usuario'];
 		$bandSesion = false;
 		$modulo = MODULO_DEFECTO;
 		unset($objModulo);

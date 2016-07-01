@@ -88,137 +88,6 @@ $conf['panelPrincipal'] = array(
 	'js' => array(),
 	'capa' => LAYOUT_DEFECTO);
 	
-#Estados
-$conf['estados'] = array(
-	'controlador' => 'estados.php',
-	'vista' => 'estados/panel.tpl',
-	'descripcion' => 'Administración de estados',
-	'seguridad' => true,
-	'js' => array('estado.class.js'),
-	'jsTemplate' => array('estados.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaEstados'] = array(
-	'controlador' => 'estados.php',
-	'vista' => 'estados/lista.tpl',
-	'descripcion' => 'Lista de estados',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['cestados'] = array(
-	'controlador' => 'estados.php',
-	'descripcion' => 'Controlador de estados',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-#Areas
-$conf['areas'] = array(
-	'controlador' => 'areas.php',
-	'vista' => 'areas/panel.tpl',
-	'descripcion' => 'Administración de areas',
-	'seguridad' => true,
-	'js' => array('area.class.js'),
-	'jsTemplate' => array('areas.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaAreas'] = array(
-	'controlador' => 'areas.php',
-	'vista' => 'areas/lista.tpl',
-	'descripcion' => 'Lista de areas',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['careas'] = array(
-	'controlador' => 'areas.php',
-	'descripcion' => 'Controlador de areas',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-
-#Departamentos
-$conf['departamentos'] = array(
-	'controlador' => 'departamentos.php',
-	'vista' => 'departamentos/panel.tpl',
-	'descripcion' => 'Administración de departamentos',
-	'seguridad' => true,
-	'js' => array('departamento.class.js'),
-	'jsTemplate' => array('departamentos.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaDepartamentos'] = array(
-	'controlador' => 'departamentos.php',
-	'vista' => 'departamentos/lista.tpl',
-	'descripcion' => 'Lista de departamentos',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['cdepartamentos'] = array(
-	'controlador' => 'departamentos.php',
-	'descripcion' => 'Controlador de departamentos',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-#Infracciones
-$conf['registroInfracciones'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/panelRegistro.tpl',
-	'descripcion' => 'Registro de infracciones',
-	'seguridad' => true,
-	'js' => array('infraccion.class.js'),
-	'jsTemplate' => array('registroInfracciones.js'),
-	'capa' => LAYOUT_DEFECTO);
-
-$conf['listaInfraccionesRegistradas'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/listaRegistradas.tpl',
-	'descripcion' => 'Lista de infracciones registradas',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-
-$conf['cinfracciones'] = array(
-	'controlador' => 'infracciones.php',
-	'descripcion' => 'Controlador de infracciones',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['autorizarInfracciones'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/panelAutorizacion.tpl',
-	'descripcion' => 'Autorización de infracciones',
-	'seguridad' => true,
-	'js' => array('infraccion.class.js'),
-	'jsTemplate' => array('autorizacionInfracciones.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaAutorizaciones'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/listaAutorizaciones.tpl',
-	'descripcion' => 'Lista de infracciones a autorizar o rechazar',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['listaImagenes'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/listaImagenes.tpl',
-	'descripcion' => 'Lista de imagenes',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['pagarInfraccion'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/panelPagar.tpl',
-	'descripcion' => 'Pago de infracciones',
-	'seguridad' => true,
-	'js' => array('infraccion.class.js'),
-	'jsTemplate' => array('pagoInfracciones.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaPorPagar'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/listaPorPagar.tpl',
-	'descripcion' => 'Lista de infracciones por pagar',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
 #Configuracion
 $conf['configuracion'] = array(
 	'controlador' => 'configuracion.php',
@@ -234,57 +103,26 @@ $conf['cconfiguracion'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-#Reportes
-$conf['reporteGeneral'] = array(
-	'controlador' => 'reportes.php',
-	'vista' => 'reportes/panelGeneral.tpl',
-	'descripcion' => 'Filtro general para la generación de reportes',
+/* Clientes */
+$conf['clientes'] = array(
+	#'controlador' => 'clientes.php',
+	'vista' => 'clientes/panel.tpl',
+	'descripcion' => 'Administración de las cuentas de clientes',
 	'seguridad' => true,
-	'js' => array('infraccion.class.js'),
-	'jsTemplate' => array('reporteGeneral.js'),
-	'capa' => LAYOUT_DEFECTO);
-	
-$conf['listaReporteGeneral'] = array(
-	'controlador' => 'reportes.php',
-	'vista' => 'reportes/listaGeneral.tpl',
-	'descripcion' => 'Lista general de infracciones',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['creportes'] = array(
-	'controlador' => 'reportes.php',
-	'descripcion' => 'Controlador de reportes',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['reactivarInfracciones'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/panelReactivar.tpl',
-	'descripcion' => 'Para dejar infracciones rechazadas, autorizadas o pagadas en estado de registro',
-	'seguridad' => true,
-	'js' => array('infraccion.class.js'),
-	'jsTemplate' => array('reactivarInfracciones.js'),
+	'js' => array('cliente.class.js'),
+	'jsTemplate' => array('clientes.js'),
 	'capa' => LAYOUT_DEFECTO);
 
-$conf['listaInfraccionesReactivar'] = array(
-	'controlador' => 'infracciones.php',
-	'vista' => 'infracciones/listaReactivar.tpl',
-	'descripcion' => 'Lista de infracciones para reactivar',
+$conf['listaClientes'] = array(
+	'controlador' => 'clientes.php',
+	'vista' => 'clientes/lista.tpl',
+	'descripcion' => 'Lista de clientes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
-
-#Respaldos
-$conf['respaldos'] = array(
-	'controlador' => 'respaldo.php',
-	'vista' => 'respaldos/panel.tpl',
-	'descripcion' => 'Generación de respaldos',
-	'seguridad' => true,
-	'jsTemplate' => array('respaldos.js'),
-	'capa' => LAYOUT_DEFECTO);
 	
-$conf['crespaldos'] = array(
-	'controlador' => 'respaldo.php',
-	'descripcion' => 'Controlador de respaldos',
+$conf['cclientes'] = array(
+	'controlador' => 'clientes.php',
+	'descripcion' => 'Controlador de clientes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

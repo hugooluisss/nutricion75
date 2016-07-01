@@ -96,12 +96,23 @@
 				<ul class="sidebar-menu">
 					<li class="header">MENÚ PRINCIPAL</li>
 					{if $PAGE.usuario->getIdTipo() eq 1}
-					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'estados', 'configuracion', 'respaldos'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'configuracion'))}active{/if} treeview">
 						<a href="#">
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="admonUsuarios"><i class="fa fa-users"></i> Usuarios</a></li>
+							<li {if $PAGE.modulo eq 'configuracion'}class="active"{/if}><a href="configuracion"><i class="fa fa-server"></i> Configuración</a></li>
+						</ul>
+					</li>
+					{/if}
+					{if $PAGE.usuario->getIdTipo() eq 1}
+					<li class="{if in_array($PAGE.modulo, array('clientes'))}active{/if} treeview">
+						<a href="#">
+							<span>Clientes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="clientes"><i class="fa fa-male"></i> Clientes</a></li>
 						</ul>
 					</li>
 					{/if}
@@ -195,6 +206,10 @@
     <script type="text/javascript" src="{$PAGE.ruta}plugins/timepicker/bootstrap-timepicker.js"></script>
     
     <script src="{$PAGE.ruta}dist/js/app.js" type="text/javascript"></script>
+    
+    <link rel="stylesheet" href="{$PAGE.ruta}plugins/bootstrap-select/css/bootstrap-select.min.css">
+    <script src="{$PAGE.ruta}plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+	<script src="{$PAGE.ruta}plugins/bootstrap-select/js/i18n/defaults-es_CL.min.js"></script>
     
     {foreach from=$PAGE.scriptsJS item=script}
 		<script type="text/javascript" src="{$script}?m={rand()}"></script>
