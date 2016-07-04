@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-01 13:50:53
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-03 22:25:46
          compiled from "templates/plantillas/modulos/clientes/winSuscripciones.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:13080011235776b8b669f973-42467734%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:11035888545779d47dab6296-89725021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3bc4acaa01621e1ac3cc6d09deb989659f6f4bb8' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/winSuscripciones.tpl',
-      1 => 1467399050,
+      1 => 1467602714,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '13080011235776b8b669f973-42467734',
+  'nocache_hash' => '11035888545779d47dab6296-89725021',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5776b8b66a0bf6_14079056',
+  'unifunc' => 'content_5779d47daffc88_41403048',
   'variables' => 
   array (
     'paquetes' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5776b8b66a0bf6_14079056')) {function content_5776b8b66a0bf6_14079056($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/nutricion75/librerias/smarty/plugins/modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_5779d47daffc88_41403048')) {function content_5779d47daffc88_41403048($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/nutricion75/librerias/smarty/plugins/modifier.date_format.php';
 ?><div class="modal fade" id="winSuscripcion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -61,6 +61,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					</div>
 					<input type="hidden" id="id"/>
 				</form>
+				<div class="row" id="dvListaSuscripciones"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

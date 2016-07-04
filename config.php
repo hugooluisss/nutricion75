@@ -105,7 +105,7 @@ $conf['cconfiguracion'] = array(
 	
 /* Clientes */
 $conf['clientes'] = array(
-	#'controlador' => 'clientes.php',
+	'controlador' => 'clientes.php',
 	'vista' => 'clientes/panel.tpl',
 	'descripcion' => 'Administración de las cuentas de clientes',
 	'seguridad' => true,
@@ -123,6 +123,13 @@ $conf['listaClientes'] = array(
 $conf['cclientes'] = array(
 	'controlador' => 'clientes.php',
 	'descripcion' => 'Controlador de clientes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaSuscripciones'] = array(
+	'controlador' => 'clientes.php',
+	'vista' => 'clientes/listaSuscripciones.tpl',
+	'descripcion' => 'Lista de suscripciones',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

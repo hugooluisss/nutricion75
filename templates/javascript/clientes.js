@@ -8,6 +8,8 @@ $(document).ready(function(){
 		$("#frmAdd #id").val("");
 	});
 	
+	$("#winSuscripcion").find("#txtFecha").datepicker();
+	
 	$("#frmAdd").validate({
 		debug: true,
 		errorClass: "validateError",
@@ -90,7 +92,9 @@ $(document).ready(function(){
 			});
 			
 			$("[action=suscripcion]").click(function(){
-				getSuscripciones(jQuery.parseJSON($(this).attr("datos")));
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				getSuscripciones(el.idCliente);
+				$("#winSuscripcion").modal();
 			});
 			
 			$("#tblLista").DataTable({
@@ -105,7 +109,46 @@ $(document).ready(function(){
 		});
 	}
 	
+	$("#winSuscripcion").find("#frmAdd").validate({
+		debug: true,
+		errorClass: "validateError",
+		rules: {
+			selPaquete: "required",
+			txtFecha: "required"
+		},
+		wrapper: 'span',
+		submitHandler: function(form){
+			var cliente = new TCliente;
+			cliente.addSuscripcion($("#winSuscripcion #id").val(), $("#winSuscripcion #selPaquete").val(), $("#winSuscripcion #txtFecha").val(), {
+				before: function(){
+					$(form).prop("disabled", true);
+				}, after: function(resp){
+					$(form).prop("disabled", false);
+					
+					if (resp.band)
+						getSuscripciones($("#winSuscripcion #id").val());
+					else
+						alert("Ocurrió un error al agregar la suscripción");
+				}
+			});
+		}
+	});
+	
 	function getSuscripciones(cliente){
-		$("#winSuscripcion").modal();
+		$("#winSuscripcion").find("#id").val(cliente);
+		
+		$.post("listaSuscripciones", {"cliente": cliente}, function(html){
+			$("#dvListaSuscripciones").html(html);
+			
+			$("#winSuscripcion").find("#tblLista").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": true
+			});
+		});
 	}
 });

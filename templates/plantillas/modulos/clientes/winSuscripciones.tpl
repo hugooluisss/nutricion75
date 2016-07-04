@@ -27,6 +27,7 @@
 					</div>
 					<input type="hidden" id="id"/>
 				</form>
+				<div class="row" id="dvListaSuscripciones"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
