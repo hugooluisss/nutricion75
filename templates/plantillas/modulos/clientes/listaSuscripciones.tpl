@@ -15,7 +15,7 @@
 				<td>{$row.inicio}</td>
 				<td>{$row.fin}</td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador='{$row.idCliente}'><i class="fa fa-times"></i></button>
+					<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador='{$row.idSuscripcion}'><i class="fa fa-times"></i></button>
 				</td>
 			</tr>
 		{/foreach}

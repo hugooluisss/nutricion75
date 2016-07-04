@@ -51,8 +51,18 @@ switch($objModulo->getId()){
 				$obj->setEmail($_POST['email']);
 				$obj->setPass($_POST['pass']);
 				$obj->setSexo($_POST['sexo']);
+				
+				$resp = $obj->guardar();
+				
+				if ($_POST['suscripcion']){
+					$objSuscripcion = new TSuscripcion;
+					$objSuscripcion->setCliente($obj->getId());
+					$objSuscripcion->setPaquete(1);
+					
+					$objSuscripcion->guardar();
+				}
 
-				echo json_encode(array("band" => $obj->guardar()));
+				echo json_encode(array("band" => $resp));
 			break;
 			case 'del':
 				$obj = new TCliente($_POST['id']);
@@ -61,7 +71,7 @@ switch($objModulo->getId()){
 			case 'validaEmail':
 				global $userSesion;
 				$db = TBase::conectaDB();
-				$rs = $db->Execute("select idCliente from cliente where email = '".$_POST['txtCorreo']."' and not idCliente = '".$_POST['id']."'");
+				$rs = $db->Execute("select idCliente from cliente where email = '".($_POST['txtCorreo'] == ''?$_POST['txtUsuario']:$_POST['txtCorreo'])."' and not idCliente = '".$_POST['id']."'");
 				
 				echo $rs->EOF?"true":"false";
 			break;
@@ -78,6 +88,10 @@ switch($objModulo->getId()){
 					echo json_encode(array("band" => true, "id" => $obj->getId()));
 				else
 					echo json_encode(array("band" => false));
+			break;
+			case 'delPaquete':
+				$obj = new TSuscripcion($_POST['id']);
+				echo json_encode(array("band" => $obj->eliminar()));
 			break;
 		}
 	break;

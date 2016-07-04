@@ -66,7 +66,7 @@ $(document).ready(function(){
 		$.get("listaClientes", function(html){
 			$("#dvLista").html(html);
 			
-			$("[action=modificar]").click(function(){
+			$("#dvLista").find("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
 				$("#id").val(el.idCliente);
@@ -78,7 +78,7 @@ $(document).ready(function(){
 				$('.nav a[href="#add"]').tab('show');
 			});
 			
-			$("[action=eliminar]").click(function(){
+			$("#dvLista").find("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TCliente;
 					obj.del($(this).attr("identificador"), {
@@ -139,6 +139,20 @@ $(document).ready(function(){
 		
 		$.post("listaSuscripciones", {"cliente": cliente}, function(html){
 			$("#dvListaSuscripciones").html(html);
+			
+			$("#winSuscripcion").find("[action=eliminar]").click(function(){
+				if(confirm("¿Seguro?")){
+					var obj = new TCliente;
+					obj.delSuscripcion($(this).attr("identificador"), {
+						after: function(data){
+							if (data.band == false)
+								alert("Ocurrió un error al eliminar la suscripción");
+								
+							getSuscripciones(cliente);
+						}
+					});
+				}
+			});
 			
 			$("#winSuscripcion").find("#tblLista").DataTable({
 				"responsive": true,

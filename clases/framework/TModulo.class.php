@@ -60,7 +60,9 @@ class TModulo{
 	public function requiereSeguridad(){
 		if ($this->idModulo == '')
 			return false;
-			
+		
+		if ($_POST['movil'] == 1) return false;
+		
 		return $this->seguridad === true or $this->seguridad == 1;
 	}
 	

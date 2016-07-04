@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-03 22:26:18
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-04 09:14:26
          compiled from "templates/plantillas/modulos/clientes/listaSuscripciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7389104175779d73ce29241-42337940%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'dab7954402a5d2ef4dd6505fa6f4389a42b00998' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/listaSuscripciones.tpl',
-      1 => 1467602776,
+      1 => 1467641171,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fin'];?>
 </td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador='<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
+					<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador='<?php echo $_smarty_tpl->tpl_vars['row']->value['idSuscripcion'];?>
 '><i class="fa fa-times"></i></button>
 				</td>
 			</tr>

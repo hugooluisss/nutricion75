@@ -47,4 +47,17 @@ TCliente = function(){
 			}
 		}, "json");
 	};
+	
+	this.delSuscripcion = function(id, fn){
+		$.post('cclientes', {
+			"id": id,
+			"action": "delPaquete"
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+			if (data.band == 'false'){
+				console.log("Error al eliminar la suscripción al cliente");
+			}
+		}, "json");
+	};
 };
