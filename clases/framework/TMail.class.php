@@ -115,7 +115,7 @@ class TMail{
 */		
 	public function construyeMail($texto, $datos){
 		foreach($datos as $indice => $valor)
-			$texto = str_replace('#'.$indice.'#', $datos[$indice], $texto);
+			$texto = str_replace('[*'.$indice.'*]', $datos[$indice], $texto);
 			
 		return $texto;
 	}

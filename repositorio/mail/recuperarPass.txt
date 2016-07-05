@@ -1,0 +1,9 @@
+Hola [*cliente.nombre*]:
+<br />
+
+<p>El motivo de este correo es para atender la solicitud de <b>recuperación de contraseña</b> que nos realizaste a través de nuestra plataforma. A continuación los datos:</p>
+
+<p><b>Usuario: </b>[*cliente.correo*]<br />
+<b>Contraseña: </b>[*cliente.pass*]</p>
+
+<p>Cualquier duda que tengas no dudes en comunicarte con nosotros</p>

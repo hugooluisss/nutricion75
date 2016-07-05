@@ -93,6 +93,28 @@ switch($objModulo->getId()){
 				$obj = new TSuscripcion($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'recuperarPass':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select idCliente from cliente where email = '".$_POST['correo']."'");
+				
+				if (!$rs->EOF){
+					$cliente = new TCliente($rs->fields['idCliente']);
+					
+					$datos = array();
+					$datos['cliente.nombre'] = $cliente->getNombre();
+					$datos['cliente.pass'] = $cliente->getPass();
+					$datos['cliente.correo'] = $cliente->getEmail();
+					
+					$email = new TMail();
+					$email->setTema("Recuperación de contraseña");
+					$email->setDestino($cliente->getEmail(), utf8_decode($cliente->getNombre()));
+					
+					$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/recuperarPass.txt"), $datos)));
+					
+					echo json_encode(array("band" => $email->send()));
+				}else
+					echo json_encode(array("band" => false));
+			break;
 		}
 	break;
 }
