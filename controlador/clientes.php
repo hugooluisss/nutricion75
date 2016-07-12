@@ -42,6 +42,21 @@ switch($objModulo->getId()){
 	break;
 	case 'cclientes':
 		switch($objModulo->getAction()){
+			case 'getData':
+				$cliente = new TCliente;
+				
+				$cliente->setId($_POST['id']);
+				
+				$data = array();
+				$data['idCliente'] = $cliente->getId();
+				$data['sexo'] = $cliente->getSexo();
+				$data['email'] = $cliente->getEmail();
+				$data['nacimiento'] = $cliente->getNacimiento();
+				$data['peso'] = $cliente->getPeso();
+				$data['estatura'] = $cliente->getEstatura();
+				
+				echo json_encode($data);
+			break;
 			case 'add':
 				$db = TBase::conectaDB();
 				$obj = new TCliente();
@@ -51,6 +66,7 @@ switch($objModulo->getId()){
 				$obj->setEmail($_POST['email']);
 				$obj->setPass($_POST['pass']);
 				$obj->setSexo($_POST['sexo']);
+				$obj->setNacimiento($_POST['nacimiento']);
 				
 				$resp = $obj->guardar();
 				
@@ -63,6 +79,14 @@ switch($objModulo->getId()){
 				}
 
 				echo json_encode(array("band" => $resp));
+			break;
+			case 'actualizarNacimiento':
+				$obj = new TCliente();
+				
+				$obj->setId($_POST['cliente']);
+				$obj->setNacimiento($_POST['nacimiento']);
+				
+				echo json_encode(array("band" => $obj->guardar()));
 			break;
 			case 'del':
 				$obj = new TCliente($_POST['id']);
@@ -114,6 +138,24 @@ switch($objModulo->getId()){
 					echo json_encode(array("band" => $email->send()));
 				}else
 					echo json_encode(array("band" => false));
+			break;
+			case 'addMomento':
+				$momento = new TMomento;
+				
+				$momento->setId();
+				$momento->setFecha($_POST['fecha']);
+				$momento->cliente->setId($_POST['cliente']);
+				$momento->setAltura($_POST['altura']);
+				$momento->setPeso($_POST['peso']);
+				
+				if ($_POST['nacimiento'] <> ''){
+					$cliente = new TCliente($_POST['cliente']);
+					$cliente->setNacimiento($_POST['nacimiento']);
+					
+					$cliente->guardar();
+				}
+				
+				echo json_encode(array("band" => $momento->guardar()));
 			break;
 		}
 	break;

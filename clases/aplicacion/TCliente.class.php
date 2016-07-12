@@ -5,6 +5,7 @@ class TCliente{
 	private $sexo;
 	private $email;
 	private $pass;
+	private $nacimiento;
 	
 	public function TCliente($id = ''){
 		$this->setId($id);
@@ -67,12 +68,38 @@ class TCliente{
 		return $this->pass;
 	}
 	
+	public function setNacimiento($val = ''){
+		$this->nacimiento = $val;
+		return true;
+	}
+	
+	public function getNacimiento(){
+		return $this->nacimiento;
+	}
+	
+	public function getPeso(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select peso, max(fecha) as ultima from momento having fecha = ultima");
+		
+		return $rs->fields['peso'] == ''?0:$rs->fields['peso'];
+	}
+	
+	public function getEstatura(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select altura, max(fecha) as ultima from momento having fecha = ultima");
+		
+		return $rs->fields['altura'] == ''?0:$rs->fields['altura'];
+	}
+	
 	public function guardar(){
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO cliente(email, nombre, pass) VALUES ('', '', '');
-");
+			$rs = $db->Execute("INSERT INTO cliente(email, nombre, pass) VALUES ('', '', '');");
 			$this->idCliente = $db->Insert_ID();
 		}
 		
@@ -83,7 +110,8 @@ class TCliente{
 				nombre = '".$this->getNombre()."',
 				sexo = '".$this->getSexo()."',
 				email = '".$this->getEmail()."',
-				pass = '".$this->getPass()."'
+				pass = '".$this->getPass()."',
+				nacimiento = '".$this->getNacimiento()."'
 			WHERE idCliente = ".$this->getId());
 			
 		return $rs?true:false;
