@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Clientes</h1>
+		<h1 class="page-header">Alimentos</h1>
 	</div>
 </div>
 
@@ -17,6 +17,7 @@
 	</div>
 	
 	<div id="add" class="tab-pane fade">
+		<div class="alert alert-success">Las cantidades son en proporciones de 100g</div>
 		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
 			<div class="box">
 				<div class="box-body">
@@ -27,30 +28,27 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtEmail" class="col-lg-2">Correo electrónico</label>
-						<div class="col-lg-5">
-							<input class="form-control" id="txtCorreo" name="txtCorreo" value="">
+						<label for="txtCarbohidratos" class="col-lg-2">Carbohidratos</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtCarbohidratos" name="txtCarbohidratos" value="0">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass" class="col-lg-2">Contraseña</label>
+						<label for="txtProteinas" class="col-lg-2">Proteinas</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtPass" name="txtPass" value="" type="password">
+							<input class="form-control" id="txtProteinas" name="txtProteinas" value="0">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selSexo" class="col-lg-2">Sexo</label>
+						<label for="txtGrasas" class="col-lg-2">Grasas</label>
 						<div class="col-lg-3">
-							<select class="selectpicker form-control" id="selSexo" name="selSexo">
-								<option data-icon="fa fa-male" value="M" style="color: blue">Hombre</option>
-								<option data-icon="fa fa-female" value="F" style="color: red">Mujer</option>
-							</select>
+							<input class="form-control" id="txtGrasas" name="txtGrasas" value="0">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass" class="col-lg-2">Fecha de nacimiento</label>
+						<label for="txtFibra" class="col-lg-2">Fibra</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtNacimiento" name="txtNacimiento" value="" class="selectpicker" type="date">
+							<input class="form-control" id="txtFibra" name="txtFibra" value="0">
 						</div>
 					</div>
 				</div>
@@ -63,6 +61,3 @@
 		</form>
 	</div>
 </div>
-
-{include file=$PAGE.rutaModulos|cat:"modulos/clientes/winSuscripciones.tpl"}
-{include file=$PAGE.rutaModulos|cat:"modulos/clientes/winMomentos.tpl"}

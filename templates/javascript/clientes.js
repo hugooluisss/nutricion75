@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('.selectpicker').selectpicker({});
+	//$('.selectpicker').selectpicker({});
 	
 	getLista();
 	
@@ -9,6 +9,7 @@ $(document).ready(function(){
 	});
 	
 	$("#winSuscripcion").find("#txtFecha").datepicker();
+	$("#frmAdd").find("#txtNacimiento").datepicker();
 	
 	$("#frmAdd").validate({
 		debug: true,
@@ -33,6 +34,9 @@ $(document).ready(function(){
 				required : true,
 				minlength: 5
 			},
+			txtNacimiento: {
+				required : true
+			}
 		},
 		wrapper: 'span', 
 		messages: {
@@ -43,7 +47,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TCliente;
 			form = $(form)
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtCorreo").val(), $("#txtPass").val(), {
+			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtCorreo").val(), $("#txtPass").val(), $("#txtNacimiento").val(), {
 				before: function(){
 					form.find("[type=submit]").prop("disabled", true);
 				},
@@ -74,6 +78,7 @@ $(document).ready(function(){
 				$("#txtCorreo").val(el.email);
 				$("#selSexo").val(el.sexo);
 				$("#txtPass").val(el.pass);
+				$("#txtNacimiento").val(el.nacimiento);
 				
 				$('.nav a[href="#add"]').tab('show');
 			});
@@ -95,6 +100,12 @@ $(document).ready(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				getSuscripciones(el.idCliente);
 				$("#winSuscripcion").modal();
+			});
+			
+			$("[action=getRegistros]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				getMomentos(el.idCliente);
+				$("#winMomentos").modal();
 			});
 			
 			$("#tblLista").DataTable({
@@ -158,6 +169,24 @@ $(document).ready(function(){
 				"responsive": true,
 				"language": espaniol,
 				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": true
+			});
+		});
+	}
+	
+	function getMomentos(cliente){
+		$("#winMomentos").find("#id").val(cliente);
+		
+		$.post("listaClienteMomentos", {"cliente": cliente}, function(html){
+			$("#dvListaMomentos").html(html);
+			
+			$("#winMomentos").find("#tblLista").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": false,
 				"lengthChange": false,
 				"ordering": true,
 				"info": true,

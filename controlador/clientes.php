@@ -27,6 +27,23 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
+	case 'listaClienteMomentos':
+		$db = TBase::conectaDB();
+		global $sesion;
+		
+		$rs = $db->Execute("select * from momento where idCliente = ".$_POST['cliente']);
+		$momento = new TMomento;
+		$datos = array();
+		while(!$rs->EOF){
+			$momento->setId($rs->fields['fecha'], $_POST['cliente']);
+			$rs->fields['imc'] = $momento->getIMC();
+			$rs->fields['pgce'] = $momento->getPGCE();
+			$rs->fields['json'] = json_encode($rs->fields);
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		$smarty->assign("lista", $datos);
+	break;
 	case 'listaSuscripciones':
 		$db = TBase::conectaDB();
 		global $sesion;

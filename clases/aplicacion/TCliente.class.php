@@ -81,7 +81,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select peso, max(fecha) as ultima from momento having fecha = ultima");
+		$rs = $db->Execute("select peso, fecha, max(fecha) as ultima from momento having fecha = ultima");
 		
 		return $rs->fields['peso'] == ''?0:$rs->fields['peso'];
 	}
@@ -90,7 +90,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select altura, max(fecha) as ultima from momento having fecha = ultima");
+		$rs = $db->Execute("select altura, fecha, max(fecha) as ultima from momento having fecha = ultima");
 		
 		return $rs->fields['altura'] == ''?0:$rs->fields['altura'];
 	}
@@ -122,6 +122,15 @@ class TCliente{
 		
 		$db = TBase::conectaDB();
 		return $db->Execute("delete from cliente where idCliente = ".$this->getId())?true:false;
+	}
+	
+	public function getEdad(){
+		if ($this->nacimiento == '') return 0;
+		
+		$datetime2 = new DateTime($this->nacimiento);
+		$datetime1 = new DateTime(date("Y-m-d"));
+		$interval = $datetime1->diff($datetime2);
+		return $interval->format('%y');
 	}
 }
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-03 22:14:07
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-12 01:21:42
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21187293295779d47f160ef5-88779799%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1467399712,
+      1 => 1468304498,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5779d47f1d88b1_05103475',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5779d47f1d88b1_05103475',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5779d47f1d88b1_05103475')) {function content_5779d47f1d88b1_05103475($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
@@ -51,6 +51,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>
 </td>
 						<td style="text-align: right">
+							<button type="button" class="btn btn-default" action="getRegistros" title="Registros" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-bar-chart"></i></button>
 							<button type="button" class="btn btn-default" action="suscripcion" title="Suscripción" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-key"></i></button>
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>

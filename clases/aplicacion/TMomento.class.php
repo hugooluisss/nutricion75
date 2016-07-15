@@ -166,4 +166,43 @@ class TMomento{
 			
 		return $rs?true:false;
 	}
+	
+	/**
+	* Retorna el valor del indice de masa corporal
+	*
+	* @autor Hugo
+	* @access public
+	* @return float valor
+	*/
+	
+	public function getIMC(){
+		$peso = $this->getPeso();
+		$altura = $this->getAltura() / 100;
+		
+		if ($peso == '' or $altura == '')
+			return 0;
+		else{
+			$imc = $peso / ($altura * $altura);
+			return round($imc, 2); //D11
+		}
+	}
+	
+	/**
+	* Retorna el porcentaje de grasa corporal estimada
+	*
+	* @autor Hugo
+	* @access public
+	* @return float valor
+	*/
+	
+	public function getPGCE(){
+		$imc = $this->getIMC();
+		$edad = $this->cliente->getEdad(); //D7
+		$iSexo = $this->cliente->getSexo() == 'M'?0:1; //D8
+		echo $this->cliente->getSexo();
+		$PGCE = -44.988 + 0.503 * $edad + 10.689 * $iSexo + 3.172 * $imc - 0.026 * $imc * $imc + 0.181 * $imc * $iSexo - 0.02 * $imc * $edad - 0.005 * $imc * $imc * $iSexo + 0.00021 * $imc * $imc * $edad;
+		
+		return round($PGCE, 2);
+
+	}
 }

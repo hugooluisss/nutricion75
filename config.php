@@ -132,4 +132,34 @@ $conf['listaSuscripciones'] = array(
 	'descripcion' => 'Lista de suscripciones',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['listaClienteMomentos'] = array(
+	'controlador' => 'clientes.php',
+	'vista' => 'clientes/listaMomentos.tpl',
+	'descripcion' => 'Lista de momentos de registro de datos del cliente',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+#Alimentos	
+$conf['alimentos'] = array(
+	'controlador' => 'alimentos.php',
+	'vista' => 'alimentos/panel.tpl',
+	'descripcion' => 'Administración de alimentos',
+	'seguridad' => true,
+	'js' => array('alimento.class.js'),
+	'jsTemplate' => array('alimentos.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaAlimentos'] = array(
+	'controlador' => 'alimentos.php',
+	'vista' => 'alimentos/lista.tpl',
+	'descripcion' => 'Lista de alimentos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['calimentos'] = array(
+	'controlador' => 'alimentos.php',
+	'descripcion' => 'Controlador de alimentos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

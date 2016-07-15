@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-03 22:13:57
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-13 15:49:40
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2892515405779d4757b0160-13665111%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1467399712,
+      1 => 1468442781,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5779d475a536b3_59715049',
   'variables' => 
   array (
     'PAGE' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5779d475a536b3_59715049',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5779d475a536b3_59715049')) {function content_5779d475a536b3_59715049($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -153,12 +153,13 @@ plugins/upload/css/jquery.fileupload.css">
 					</li>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()==1){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes','alimentos'))){?>active<?php }?> treeview">
 						<a href="#">
-							<span>Clientes</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="clientes"><i class="fa fa-male"></i> Clientes</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='alimentos'){?>class="active"<?php }?>><a href="alimentos"><i class="fa fa-coffee"></i> Alimentos</a></li>
 						</ul>
 					</li>
 					<?php }?>
