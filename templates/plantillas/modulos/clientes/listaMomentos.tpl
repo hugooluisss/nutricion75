@@ -1,4 +1,3 @@
-
 <table id="tblLista" class="table table-bordered table-hover">
 	<thead>
 		<tr>

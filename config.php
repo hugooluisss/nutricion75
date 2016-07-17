@@ -9,6 +9,7 @@ define('STATUS', 'En desarrollo');
 
 define('LAYOUT_DEFECTO', 'layout/default.tpl');
 define('LAYOUT_AJAX', 'layout/update.tpl');
+define('LAYOUT_JSON', 'layout/json.tpl');
 
 #Login y su controlador
 $conf['inicio'] = array(
@@ -162,4 +163,35 @@ $conf['calimentos'] = array(
 	'descripcion' => 'Controlador de alimentos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+#Actividades	
+$conf['actividades'] = array(
+	'controlador' => 'actividades.php',
+	'vista' => 'actividades/panel.tpl',
+	'descripcion' => 'Administración de actividades',
+	'seguridad' => true,
+	'js' => array('actividad.class.js'),
+	'jsTemplate' => array('actividades.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaActividades'] = array(
+	'controlador' => 'actividades.php',
+	'vista' => 'actividades/lista.tpl',
+	'descripcion' => 'Lista de actividades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cactividades'] = array(
+	'controlador' => 'actividades.php',
+	'descripcion' => 'Controlador de actividades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaTipoActividades'] = array(
+	'controlador' => 'actividades.php',
+	'vista' => '',
+	'descripcion' => 'Lista de actividades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 ?>

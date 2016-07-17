@@ -81,7 +81,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select peso, fecha, max(fecha) as ultima from momento having fecha = ultima");
+		$rs = $db->Execute("select peso, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['peso'] == ''?0:$rs->fields['peso'];
 	}
@@ -90,9 +90,18 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select altura, fecha, max(fecha) as ultima from momento having fecha = ultima");
+		$rs = $db->Execute("select altura, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['altura'] == ''?0:$rs->fields['altura'];
+	}
+	
+	public function getTipoActividad(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select idActividad, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
+		
+		return $rs->fields['idActividad'];
 	}
 	
 	public function guardar(){

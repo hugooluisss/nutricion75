@@ -71,6 +71,11 @@ switch($objModulo->getId()){
 				$data['nacimiento'] = $cliente->getNacimiento();
 				$data['peso'] = $cliente->getPeso();
 				$data['estatura'] = $cliente->getEstatura();
+				$data['idActividad'] = $cliente->getTipoActividad();
+				
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select nombre from tipoactividad where idTipo = ".$data['idActividad']);
+				$data['nombreActividad'] = $rs->fields['nombre'];
 				
 				echo json_encode($data);
 			break;
@@ -164,6 +169,7 @@ switch($objModulo->getId()){
 				$momento->cliente->setId($_POST['cliente']);
 				$momento->setAltura($_POST['altura']);
 				$momento->setPeso($_POST['peso']);
+				$momento->setActividad($_POST['actividad']);
 				
 				if ($_POST['nacimiento'] <> ''){
 					$cliente = new TCliente($_POST['cliente']);
@@ -172,7 +178,7 @@ switch($objModulo->getId()){
 					$cliente->guardar();
 				}
 				
-				echo json_encode(array("band" => $momento->guardar()));
+				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad()));
 			break;
 		}
 	break;

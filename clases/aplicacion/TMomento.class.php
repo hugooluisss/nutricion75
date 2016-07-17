@@ -10,6 +10,7 @@ class TMomento{
 	private $fecha;
 	private $altura;
 	private $peso;
+	private $idTipo;
 	
 	/**
 	* Constructor de la clase
@@ -138,6 +139,33 @@ class TMomento{
 	}
 	
 	/**
+	* Establece el peso en kg
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setActividad($val = ""){
+		$this->idActividad = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el identificador del tipo de actividad
+	*
+	* @autor Hugo
+	* @access public
+	* @return integer Texto
+	*/
+	
+	public function getActividad(){
+		return $this->idActividad;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -147,12 +175,13 @@ class TMomento{
 	
 	public function guardar(){
 		if ($this->cliente->getId() == '') return false;
+		if ($this->getActividad() == '') return false;
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select * from momento where fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 		
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente) VALUES(now(), ".$this->cliente->getId().");");
+			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente, idActividad) VALUES(now(), ".$this->cliente->getId().", ".$this->getActividad().");");
 			if (!$rs) return false;
 			
 			$this->setFecha($this->getFecha());
@@ -161,7 +190,8 @@ class TMomento{
 		$rs = $db->Execute("UPDATE momento
 			SET
 				altura = ".$this->getAltura().",
-				peso = ".$this->getPeso()."
+				peso = ".$this->getPeso().",
+				idActividad = ".$this->getActividad()."
 			WHERE fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 			
 		return $rs?true:false;
@@ -199,10 +229,40 @@ class TMomento{
 		$imc = $this->getIMC();
 		$edad = $this->cliente->getEdad(); //D7
 		$iSexo = $this->cliente->getSexo() == 'M'?0:1; //D8
-		echo $this->cliente->getSexo();
+
 		$PGCE = -44.988 + 0.503 * $edad + 10.689 * $iSexo + 3.172 * $imc - 0.026 * $imc * $imc + 0.181 * $imc * $iSexo - 0.02 * $imc * $edad - 0.005 * $imc * $imc * $iSexo + 0.00021 * $imc * $imc * $edad;
 		
 		return round($PGCE, 2);
 
+	}
+	
+	/**
+	* Retorna el MBR
+	*
+	* @autor Hugo
+	* @access public
+	* @return float valor
+	*/
+	public function getMBR(){
+		if ($this->cliente->getSexo == 'H')
+			return 1 * $this->getPeso() * 24;
+		else
+			return 0.9 * $this->getPeso() * 24;
+	}
+	
+	/**
+	* Retorna el nivel de magro
+	*
+	* @autor Hugo
+	* @access public
+	* @return array valor
+	*/
+	public function getObesidad(){
+		if ($this->cliente->getId() == '') return false;
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select * from obesidad where sexo = '".$this->cliente->getSexo()."' and porcentaje >= ".$this->getPGCE());	
+		
+		return $rs->fields;
 	}
 }
