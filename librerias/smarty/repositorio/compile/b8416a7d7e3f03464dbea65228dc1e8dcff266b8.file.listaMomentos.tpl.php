@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-12 01:48:25
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-20 17:18:20
          compiled from "templates/plantillas/modulos/clientes/listaMomentos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:162702704257848e380a1288-64279405%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8416a7d7e3f03464dbea65228dc1e8dcff266b8' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/listaMomentos.tpl',
-      1 => 1468306103,
+      1 => 1468640403,
       2 => 'file',
     ),
   ),
@@ -24,8 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57848e38114b18_33412613')) {function content_57848e38114b18_33412613($_smarty_tpl) {?>
-<table id="tblLista" class="table table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_57848e38114b18_33412613')) {function content_57848e38114b18_33412613($_smarty_tpl) {?><table id="tblLista" class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Fecha</th>

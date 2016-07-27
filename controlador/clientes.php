@@ -72,6 +72,8 @@ switch($objModulo->getId()){
 				$data['peso'] = $cliente->getPeso();
 				$data['estatura'] = $cliente->getEstatura();
 				$data['idActividad'] = $cliente->getTipoActividad();
+				$data['nombre'] = $cliente->getNombre();
+				$data['fecha'] = $cliente->getFechaUltimaActualizacion();
 				
 				$db = TBase::conectaDB();
 				$rs = $db->Execute("select nombre from tipoactividad where idTipo = ".$data['idActividad']);

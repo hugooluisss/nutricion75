@@ -95,6 +95,15 @@ class TCliente{
 		return $rs->fields['altura'] == ''?0:$rs->fields['altura'];
 	}
 	
+	public function getFechaUltimaActualizacion(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
+		
+		return $rs->fields['fecha'] == ''?'':$rs->fields['fecha'];
+	}
+	
 	public function getTipoActividad(){
 		if ($this->getId() == '') return false;
 		
