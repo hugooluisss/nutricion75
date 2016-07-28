@@ -11,6 +11,7 @@ class TMomento{
 	private $altura;
 	private $peso;
 	private $idTipo;
+	private $idObjetivo;
 	
 	/**
 	* Constructor de la clase
@@ -139,7 +140,7 @@ class TMomento{
 	}
 	
 	/**
-	* Establece el peso en kg
+	* Establece el identificador de la actividad
 	*
 	* @autor Hugo
 	* @access public
@@ -166,6 +167,33 @@ class TMomento{
 	}
 	
 	/**
+	* Establece el objetivo
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setObjetivo($val = ""){
+		$this->idObjetivo = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el id del objetivo
+	*
+	* @autor Hugo
+	* @access public
+	* @return integer Identificador
+	*/
+	
+	public function getObjetivo(){
+		return $this->idObjetivo;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -176,12 +204,13 @@ class TMomento{
 	public function guardar(){
 		if ($this->cliente->getId() == '') return false;
 		if ($this->getActividad() == '') return false;
+		if ($this->getObjetivo() == '') return false;
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select * from momento where fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 		
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente, idActividad) VALUES(now(), ".$this->cliente->getId().", ".$this->getActividad().");");
+			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente, idActividad, idObjetivo) VALUES(now(), ".$this->cliente->getId().", ".$this->getActividad().", ".$this->getObjetivo().");");
 			if (!$rs) return false;
 			
 			$this->setFecha($this->getFecha());
@@ -191,7 +220,8 @@ class TMomento{
 			SET
 				altura = ".$this->getAltura().",
 				peso = ".$this->getPeso().",
-				idActividad = ".$this->getActividad()."
+				idActividad = ".$this->getActividad().",
+				idObjetivo = ".$this->getObjetivo()."
 			WHERE fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 			
 		return $rs?true:false;

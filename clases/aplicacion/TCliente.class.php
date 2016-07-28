@@ -108,6 +108,15 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
+		$rs = $db->Execute("select idTipo, fecha, max(fecha) as ultima from momento a join actividad b using(idActividad) where idCliente = ".$this->getId()." order by fecha desc");
+		
+		return $rs->fields['idTipo'];
+	}
+	
+	public function getActividad(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
 		$rs = $db->Execute("select idActividad, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['idActividad'];

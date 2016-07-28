@@ -194,4 +194,10 @@ $conf['listaTipoActividades'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+#Objetivos
+$conf['listaObjetivos'] = array(
+	'controlador' => 'objetivos.php',
+	'descripcion' => 'Lista de objetivos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
