@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-15 19:29:06
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-28 12:15:30
          compiled from "templates/plantillas/modulos/actividades/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21139374595789783e43c577-77780674%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '590e93f85ba881c075727dcb5e9a40cdca0c6862' => 
     array (
       0 => 'templates/plantillas/modulos/actividades/lista.tpl',
-      1 => 1468628944,
+      1 => 1469725569,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th>#</th>
 					<th>Nombre</th>
 					<th>Tipo</th>
+					<th>Proteinas</th>
+					<th>Grasa</th>
+					<th>Carbohidratos</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -49,6 +52,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['tipoActividad'];?>
 </td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['proteinas'];?>
+ %</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['grasas'];?>
+ %</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['carbohidratos'];?>
+ %</td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>

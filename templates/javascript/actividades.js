@@ -13,28 +13,40 @@ $(document).ready(function(){
 			txtNombre: "required",
 			selTipo: {
 				required : true
+			},
+			setGrasas: {
+				required : true
+			},
+			selProteinas: {
+				required : true
+			},
+			selCarbohidratos: {
+				required : true
 			}
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
-			var obj = new TActividad;
-			form = $(form)
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selTipo").val(), {
-				before: function(){
-					form.find("[type=submit]").prop("disabled", true);
-				},
-				after: function(data){
-					form.find("[type=submit]").prop("disabled", false);
-					
-					if (data.band == false){
-						alert("No se pudo guardar el registro");
-					}else{
-						$("#frmAdd").get(0).reset();
-						$('.nav a[href="#listas"]').tab('show');
-						getLista();
+			if (parseInt($("#selGrasas").val()) + parseInt($("#selProteinas").val()) + parseInt($("#selCarbohidratos").val()) == 100){
+				var obj = new TActividad;
+				form = $(form)
+				obj.add($("#id").val(), $("#txtNombre").val(), $("#selTipo").val(), $("#selGrasas").val(), $("#selProteinas").val(), $("#selCarbohidratos").val(), {
+					before: function(){
+						form.find("[type=submit]").prop("disabled", true);
+					},
+					after: function(data){
+						form.find("[type=submit]").prop("disabled", false);
+						
+						if (data.band == false){
+							alert("No se pudo guardar el registro");
+						}else{
+							$("#frmAdd").get(0).reset();
+							$('.nav a[href="#listas"]').tab('show');
+							getLista();
+						}
 					}
-				}
-			});
+				});
+			}else
+				alert("La suma de grasas, proteinas y carbohidratos deben de dar un total de 100%");
 		}
 	});
 	
@@ -48,6 +60,9 @@ $(document).ready(function(){
 				$("#id").val(el.idActividad);
 				$("#txtNombre").val(el.nombre);
 				$("#selTipo").val(el.idTipo);
+				$("#selGrasas").val(el.grasas);
+				$("#selProteinas").val(el.proteinas);
+				$("#selCarbohidratos").val(el.carbohidratos);
 				
 				$('.nav a[href="#add"]').tab('show');
 			});

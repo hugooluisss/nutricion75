@@ -9,6 +9,9 @@ class TActividad{
 	private $idActividad;
 	private $idTipo;
 	private $nombre;
+	private $grasas;
+	private $proteinas;
+	private $carbohidratos;
 	
 	/**
 	* Constructor de la clase
@@ -117,6 +120,87 @@ class TActividad{
 	}
 	
 	/**
+	* Establece el porcentaje de grasas
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setGrasas($val = 0){
+		$this->grasas = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el porcentaje de grasas
+	*
+	* @autor Hugo
+	* @access public
+	* @return int valor
+	*/
+	
+	public function getGrasas(){
+		return $this->grasas = ''?0:$this->grasas;
+	}
+	
+	/**
+	* Establece el porcentaje de proteinas
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setProteinas($val = 0){
+		$this->proteinas = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el porcentaje de proteinas
+	*
+	* @autor Hugo
+	* @access public
+	* @return int valor
+	*/
+	
+	public function getProteinas(){
+		return $this->proteinas == ''?0:$this->proteinas;
+	}
+	
+	/**
+	* Establece el porcentaje de carbohidratos
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setCarbohidratos($val = 0){
+		$this->carbohidratos = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el porcentaje de carbohidratos
+	*
+	* @autor Hugo
+	* @access public
+	* @return int valor
+	*/
+	
+	public function getCarbohidratos(){
+		return $this->carbohidratos == ''?0:$this->carbohidratos;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -140,7 +224,10 @@ class TActividad{
 		$rs = $db->Execute("UPDATE actividad
 			SET
 				nombre = '".$this->getNombre()."',
-				idTipo = ".$this->getTipo()."
+				idTipo = ".$this->getTipo().",
+				carbohidratos = ".$this->getCarbohidratos().",
+				grasas = ".$this->getGrasas().",
+				proteinas = ".$this->getProteinas()."
 			WHERE idActividad = ".$this->getId());
 			
 		return $rs?true:false;

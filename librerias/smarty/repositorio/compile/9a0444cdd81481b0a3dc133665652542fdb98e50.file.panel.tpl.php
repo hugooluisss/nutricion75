@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-15 18:58:50
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-28 12:14:15
          compiled from "templates/plantillas/modulos/actividades/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15992957305789783d7f82e3-48139118%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9a0444cdd81481b0a3dc133665652542fdb98e50' => 
     array (
       0 => 'templates/plantillas/modulos/actividades/panel.tpl',
-      1 => 1468627129,
+      1 => 1469725577,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'actividades' => 0,
     'row' => 0,
+    'i' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -66,6 +67,54 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </option>
 								<?php } ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selProteinas" class="col-lg-2">Proteinas</label>
+						<div class="col-lg-3">
+							<select id="selProteinas" name="selProteinas" class="form-control">
+								<option value="">Selecciona un porcentaje</option>
+								<?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 10;$_smarty_tpl->tpl_vars['i']->total = (int)ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? 100+1 - (10) : 10-(100)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0){
+for ($_smarty_tpl->tpl_vars['i']->value = 10, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++){
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+									<option value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+ %</option>
+								<?php }} ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selGrasas" class="col-lg-2">Grasas</label>
+						<div class="col-lg-3">
+							<select id="selGrasas" name="selGrasas" class="form-control">
+								<option value="">Selecciona un porcentaje</option>
+								<?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 10;$_smarty_tpl->tpl_vars['i']->total = (int)ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? 100+1 - (10) : 10-(100)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0){
+for ($_smarty_tpl->tpl_vars['i']->value = 10, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++){
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+									<option value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+ %</option>
+								<?php }} ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selCarbohidratos" class="col-lg-2">Carbohidratos</label>
+						<div class="col-lg-3">
+							<select id="selCarbohidratos" name="selCarbohidratos" class="form-control">
+								<option value="">Selecciona un porcentaje</option>
+								<?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 10;$_smarty_tpl->tpl_vars['i']->total = (int)ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? 100+1 - (10) : 10-(100)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0){
+for ($_smarty_tpl->tpl_vars['i']->value = 10, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++){
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+									<option value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+ %</option>
+								<?php }} ?>
 							</select>
 						</div>
 					</div>

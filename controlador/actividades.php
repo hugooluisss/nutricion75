@@ -25,6 +25,7 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("lista", $datos);
+		$smarty->assign("json", $datos);
 	break;
 	case 'listaTipoActividades':
 		$db = TBase::conectaDB();
@@ -48,6 +49,9 @@ switch($objModulo->getId()){
 				$obj->setId($_POST['id']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setTipo($_POST['tipo']);
+				$obj->setGrasas($_POST['grasas']);
+				$obj->setProteinas($_POST['proteinas']);
+				$obj->setCarbohidratos($_POST['carbohidratos']);
 
 				echo json_encode(array("band" => $obj->guardar()));
 			break;

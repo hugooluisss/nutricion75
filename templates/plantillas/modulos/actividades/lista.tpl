@@ -6,6 +6,9 @@
 					<th>#</th>
 					<th>Nombre</th>
 					<th>Tipo</th>
+					<th>Proteinas</th>
+					<th>Grasa</th>
+					<th>Carbohidratos</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -15,6 +18,9 @@
 						<td style="border-left: 5px solid {$row.color}">{$row.idActividad}</td>
 						<td>{$row.nombre}</td>
 						<td>{$row.tipoActividad}</td>
+						<td class="text-right">{$row.proteinas} %</td>
+						<td class="text-right">{$row.grasas} %</td>
+						<td class="text-right">{$row.carbohidratos} %</td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador='{$row.idActividad}'><i class="fa fa-times"></i></button>
