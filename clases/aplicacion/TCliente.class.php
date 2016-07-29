@@ -81,7 +81,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select peso, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
+		$rs = $db->Execute("select peso, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['peso'] == ''?0:$rs->fields['peso'];
 	}
@@ -90,7 +90,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select altura, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
+		$rs = $db->Execute("select altura, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['altura'] == ''?0:$rs->fields['altura'];
 	}
@@ -108,7 +108,7 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idTipo, fecha, max(fecha) as ultima from momento a join actividad b using(idActividad) where idCliente = ".$this->getId()." order by fecha desc");
+		$rs = $db->Execute("select idTipo, fecha from momento a join actividad b using(idActividad) where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['idTipo'];
 	}
@@ -117,9 +117,18 @@ class TCliente{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idActividad, fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
+		$rs = $db->Execute("select idActividad, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
 		
 		return $rs->fields['idActividad'];
+	}
+	
+	public function getObjetivo(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select idObjetivo, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
+		
+		return $rs->fields['idObjetivo'];
 	}
 	
 	public function guardar(){
