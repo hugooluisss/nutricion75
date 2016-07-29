@@ -10,7 +10,7 @@ class TMomento{
 	private $fecha;
 	private $altura;
 	private $peso;
-	private $idTipo;
+	private $idActividad;
 	private $idObjetivo;
 	
 	/**
@@ -20,9 +20,9 @@ class TMomento{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TMomento($id = ''){
-		$this->cliente = new TCliente;
-		$this->setId($id);
+	public function TMomento($id = '', $cliente = ''){
+		$this->cliente = new TCliente($cliente);
+		$this->setId($id, $cliente);
 		
 		return true;
 	}
@@ -155,7 +155,7 @@ class TMomento{
 	}
 	
 	/**
-	* Retorna el identificador del tipo de actividad
+	* Retorna el identificador de la actividad
 	*
 	* @autor Hugo
 	* @access public
@@ -294,5 +294,27 @@ class TMomento{
 		$rs = $db->Execute("select * from obesidad where sexo = '".$this->cliente->getSexo()."' and porcentaje >= ".$this->getPGCE());	
 		
 		return $rs->fields;
+	}
+	
+	/**
+	* Cálculo de calorías
+	*
+	* @autor Hugo
+	* @access public
+	* @return array valor
+	*/
+	public function getCalorias(){
+		if ($this->cliente->getId() == '') return false;
+		$db = TBase::conectaDB();
+		
+		$mbr = $this->getMBR() == ''?0:$this->getMBR();
+		
+		$rs = $db->Execute("select b.indice from actividad a join tipoactividad b using(idTipo) where a.idActividad = ".$this->getActividad()."");
+		$indice = $rs->fields['indice'] == ''?0:$rs->fields['indice'];
+		
+		$rs = $db->Execute("select * from objetivo where idObjetivo = ".$this->getObjetivo());
+		$caloriasObjetivo = $rs->fields['tipo'] * $rs->fields['calorias'];
+		
+		return $mbr * $indice + $caloriasObjetivo;
 	}
 }

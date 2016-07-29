@@ -75,6 +75,7 @@ switch($objModulo->getId()){
 				$data['nombre'] = $cliente->getNombre();
 				$data['fecha'] = $cliente->getFechaUltimaActualizacion();
 				$data['objetivo'] = $cliente->getObjetivo();
+				$data['calorias'] = $cliente->getCalorias();
 				$db = TBase::conectaDB();
 				$rs = $db->Execute("select nombre from actividad where idTipo = ".$data['idActividad']);
 				$data['nombreActividad'] = $rs->fields['nombre'];
@@ -181,7 +182,7 @@ switch($objModulo->getId()){
 					$cliente->guardar();
 				}
 				
-				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad()));
+				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad(), "calorias" => $momento->getCalorias()));
 			break;
 		}
 	break;

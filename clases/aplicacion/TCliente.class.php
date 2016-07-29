@@ -98,37 +98,46 @@ class TCliente{
 	public function getFechaUltimaActualizacion(){
 		if ($this->getId() == '') return false;
 		
-		$db = TBase::conectaDB();
-		$rs = $db->Execute("select fecha, max(fecha) as ultima from momento where idCliente = ".$this->getId()." order by fecha desc");
-		
-		return $rs->fields['fecha'] == ''?'':$rs->fields['fecha'];
+		return $this->getUltimoMomento();
 	}
 	
 	public function getTipoActividad(){
 		if ($this->getId() == '') return false;
 		
-		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idTipo, fecha from momento a join actividad b using(idActividad) where idCliente = ".$this->getId()." order by fecha desc");
+		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+		$actividad = new TActividad($momento->getActividad());
 		
-		return $rs->fields['idTipo'];
+		return $actividad->getTipo();
 	}
 	
 	public function getActividad(){
 		if ($this->getId() == '') return false;
 		
-		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idActividad, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
-		
-		return $rs->fields['idActividad'];
+		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+		return $momento->getActividad();
 	}
 	
 	public function getObjetivo(){
 		if ($this->getId() == '') return false;
 		
-		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idObjetivo, fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
+		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+		return $momento->getObjetivo();
+	}
+	
+	public function getCalorias(){
+		if ($this->getId() == '') return false;
 		
-		return $rs->fields['idObjetivo'];
+		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+		return $momento->getCalorias();
+	}
+	
+	public function getUltimoMomento(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select fecha from momento where idCliente = ".$this->getId()." order by fecha desc");
+		
+		return $rs->fields['fecha'];
 	}
 	
 	public function guardar(){
