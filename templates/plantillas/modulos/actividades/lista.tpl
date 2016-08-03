@@ -5,7 +5,6 @@
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Tipo</th>
 					<th>Proteinas</th>
 					<th>Grasa</th>
 					<th>Carbohidratos</th>
@@ -15,9 +14,8 @@
 			<tbody>
 				{foreach from=$lista item="row"}
 					<tr>
-						<td style="border-left: 5px solid {$row.color}">{$row.idActividad}</td>
+						<td>{$row.idActividad}</td>
 						<td>{$row.nombre}</td>
-						<td>{$row.tipoActividad}</td>
 						<td class="text-right">{$row.proteinas} %</td>
 						<td class="text-right">{$row.grasas} %</td>
 						<td class="text-right">{$row.carbohidratos} %</td>

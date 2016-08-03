@@ -187,10 +187,10 @@ $conf['cactividades'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-$conf['listaTipoActividades'] = array(
+$conf['listaFrecuencias'] = array(
 	'controlador' => 'actividades.php',
 	'vista' => '',
-	'descripcion' => 'Lista de actividades',
+	'descripcion' => 'Lista de frecuencias de actividad',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 

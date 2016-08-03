@@ -117,6 +117,13 @@ class TCliente{
 		return $momento->getActividad();
 	}
 	
+	public function getFrecuencia(){
+		if ($this->getId() == '') return false;
+		
+		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+		return $momento->getFrecuencia();
+	}
+	
 	public function getObjetivo(){
 		if ($this->getId() == '') return false;
 		

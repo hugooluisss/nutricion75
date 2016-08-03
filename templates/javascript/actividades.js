@@ -11,9 +11,6 @@ $(document).ready(function(){
 		errorClass: "validateError",
 		rules: {
 			txtNombre: "required",
-			selTipo: {
-				required : true
-			},
 			setGrasas: {
 				required : true
 			},
@@ -29,7 +26,7 @@ $(document).ready(function(){
 			if (parseInt($("#selGrasas").val()) + parseInt($("#selProteinas").val()) + parseInt($("#selCarbohidratos").val()) == 100){
 				var obj = new TActividad;
 				form = $(form)
-				obj.add($("#id").val(), $("#txtNombre").val(), $("#selTipo").val(), $("#selGrasas").val(), $("#selProteinas").val(), $("#selCarbohidratos").val(), {
+				obj.add($("#id").val(), $("#txtNombre").val(), $("#selGrasas").val(), $("#selProteinas").val(), $("#selCarbohidratos").val(), {
 					before: function(){
 						form.find("[type=submit]").prop("disabled", true);
 					},
@@ -59,7 +56,6 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idActividad);
 				$("#txtNombre").val(el.nombre);
-				$("#selTipo").val(el.idTipo);
 				$("#selGrasas").val(el.grasas);
 				$("#selProteinas").val(el.proteinas);
 				$("#selCarbohidratos").val(el.carbohidratos);

@@ -71,14 +71,14 @@ switch($objModulo->getId()){
 				$data['nacimiento'] = $cliente->getNacimiento();
 				$data['peso'] = $cliente->getPeso();
 				$data['estatura'] = $cliente->getEstatura();
-				$data['idActividad'] = $cliente->getActividad();
+				$data['idFrecuencia'] = $cliente->getFrecuencia();
 				$data['nombre'] = $cliente->getNombre();
 				$data['fecha'] = $cliente->getFechaUltimaActualizacion();
 				$data['objetivo'] = $cliente->getObjetivo();
-				$data['calorias'] = $cliente->getCalorias();
+				//$data['calorias'] = $cliente->getCalorias();
 				$db = TBase::conectaDB();
-				$rs = $db->Execute("select nombre from actividad where idTipo = ".$data['idActividad']);
-				$data['nombreActividad'] = $rs->fields['nombre'];
+				$rs = $db->Execute("select nombre from frecuencia where idFrecuencia = ".$data['idFrecuencia']);
+				$data['nombreFrecuencia'] = $rs->fields['nombre'];
 				
 				echo json_encode($data);
 			break;
@@ -172,7 +172,7 @@ switch($objModulo->getId()){
 				$momento->cliente->setId($_POST['cliente']);
 				$momento->setAltura($_POST['altura']);
 				$momento->setPeso($_POST['peso']);
-				$momento->setActividad($_POST['actividad']);
+				$momento->setFrecuencia($_POST['frecuencia']);
 				$momento->setObjetivo($_POST['objetivo']);
 				
 				if ($_POST['nacimiento'] <> ''){
@@ -181,6 +181,16 @@ switch($objModulo->getId()){
 					
 					$cliente->guardar();
 				}
+				
+				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad(), "calorias" => $momento->getCalorias()));
+			break;
+			case 'setActividad':
+				$momento = new TMomento();
+				$momento->setCliente($_POST['cliente']);
+				$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+				$momento->setId($momento->cliente->getUltimoMomento(), $_POST['cliente']);
+				
+				$momento->setActividad($_POST['actividad']);
 				
 				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad(), "calorias" => $momento->getCalorias()));
 			break;

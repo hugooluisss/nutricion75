@@ -17,7 +17,7 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $sesion;
 		
-		$rs = $db->Execute("select a.*, b.nombre as tipoActividad, b.color from actividad a join tipoactividad b using(idTipo)");
+		$rs = $db->Execute("select a.* from actividad a where visible = 1");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -27,10 +27,10 @@ switch($objModulo->getId()){
 		$smarty->assign("lista", $datos);
 		$smarty->assign("json", $datos);
 	break;
-	case 'listaTipoActividades':
+	case 'listaFrecuencias':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from tipoactividad");
+		$rs = $db->Execute("select * from frecuencia");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -48,7 +48,6 @@ switch($objModulo->getId()){
 				
 				$obj->setId($_POST['id']);
 				$obj->setNombre($_POST['nombre']);
-				$obj->setTipo($_POST['tipo']);
 				$obj->setGrasas($_POST['grasas']);
 				$obj->setProteinas($_POST['proteinas']);
 				$obj->setCarbohidratos($_POST['carbohidratos']);

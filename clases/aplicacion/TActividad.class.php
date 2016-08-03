@@ -7,7 +7,6 @@
 **/
 class TActividad{
 	private $idActividad;
-	private $idTipo;
 	private $nombre;
 	private $grasas;
 	private $proteinas;
@@ -90,33 +89,6 @@ class TActividad{
 	
 	public function getNombre(){
 		return $this->nombre;
-	}
-	
-	/**
-	* Establece el tipo
-	*
-	* @autor Hugo
-	* @access public
-	* @param int $val Valor a asignar
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setTipo($val = ''){
-		$this->idTipo = $val;
-		
-		return true;
-	}
-	
-	/**
-	* Retorna el identificador del tipo
-	*
-	* @autor Hugo
-	* @access public
-	* @return int valor
-	*/
-	
-	public function getTipo(){
-		return $this->idTipo;
 	}
 	
 	/**
@@ -213,7 +185,7 @@ class TActividad{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO actividad(idTipo) VALUES(".$this->getTipo().");");
+			$rs = $db->Execute("INSERT INTO actividad(nombre) VALUES('');");
 			if (!$rs) return false;
 			
 			$this->idActividad = $db->Insert_ID();
@@ -224,7 +196,6 @@ class TActividad{
 		$rs = $db->Execute("UPDATE actividad
 			SET
 				nombre = '".$this->getNombre()."',
-				idTipo = ".$this->getTipo().",
 				carbohidratos = ".$this->getCarbohidratos().",
 				grasas = ".$this->getGrasas().",
 				proteinas = ".$this->getProteinas()."

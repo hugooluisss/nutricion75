@@ -10,8 +10,9 @@ class TMomento{
 	private $fecha;
 	private $altura;
 	private $peso;
-	private $idActividad;
+	private $idFrecuencia;
 	private $idObjetivo;
+	public $actividad;
 	
 	/**
 	* Constructor de la clase
@@ -22,6 +23,7 @@ class TMomento{
 	*/
 	public function TMomento($id = '', $cliente = ''){
 		$this->cliente = new TCliente($cliente);
+		$this->actividad = new TActividad(0);
 		$this->setId($id, $cliente);
 		
 		return true;
@@ -44,11 +46,13 @@ class TMomento{
 		$rs = $db->Execute("select * from momento where fecha = '".$fecha."' and idCliente = ".$cliente);
 		
 		if ($rs->EOF) return false;
-		
 		foreach($rs->fields as $key => $val){
 			switch($key){
 				case 'idCliente':
 					$this->cliente = new TCliente($val);
+				break;
+				case 'idActividad':
+					$this->actividad = new TActividad($val);
 				break;
 				default:
 					$this->$key = $val;
@@ -140,7 +144,7 @@ class TMomento{
 	}
 	
 	/**
-	* Establece el identificador de la actividad
+	* Establece el identificador de la frecuencia
 	*
 	* @autor Hugo
 	* @access public
@@ -148,22 +152,22 @@ class TMomento{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setActividad($val = ""){
-		$this->idActividad = $val;
+	public function setFrecuencia($val = ""){
+		$this->idFrecuencia = $val;
 		
 		return true;
 	}
 	
 	/**
-	* Retorna el identificador de la actividad
+	* Retorna el identificador de la frecuencia
 	*
 	* @autor Hugo
 	* @access public
 	* @return integer Texto
 	*/
 	
-	public function getActividad(){
-		return $this->idActividad;
+	public function getFrecuencia(){
+		return $this->idFrecuencia;
 	}
 	
 	/**
@@ -203,14 +207,14 @@ class TMomento{
 	
 	public function guardar(){
 		if ($this->cliente->getId() == '') return false;
-		if ($this->getActividad() == '') return false;
+		if ($this->getFrecuencia() == '') return false;
 		if ($this->getObjetivo() == '') return false;
-		$db = TBase::conectaDB();
 		
+		$db = TBase::conectaDB();
 		$rs = $db->Execute("select * from momento where fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 		
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente, idActividad, idObjetivo) VALUES(now(), ".$this->cliente->getId().", ".$this->getActividad().", ".$this->getObjetivo().");");
+			$rs = $db->Execute("INSERT INTO momento(fecha, idCliente, idFrecuencia, idObjetivo, idActividad) VALUES(now(), ".$this->cliente->getId().", ".$this->getFrecuencia().", ".$this->getObjetivo().", 0);");
 			if (!$rs) return false;
 			
 			$this->setFecha($this->getFecha());
@@ -220,8 +224,9 @@ class TMomento{
 			SET
 				altura = ".$this->getAltura().",
 				peso = ".$this->getPeso().",
-				idActividad = ".$this->getActividad().",
-				idObjetivo = ".$this->getObjetivo()."
+				idFrecuencia = ".$this->getFrecuencia().",
+				idObjetivo = ".$this->getObjetivo().",
+				idActividad = ".$this->actividad->getId()."
 			WHERE fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 			
 		return $rs?true:false;
@@ -309,7 +314,7 @@ class TMomento{
 		
 		$mbr = $this->getMBR() == ''?0:$this->getMBR();
 		
-		$rs = $db->Execute("select b.indice from actividad a join tipoactividad b using(idTipo) where a.idActividad = ".$this->getActividad()."");
+		$rs = $db->Execute("select b.indice from frecuencia b where a.idFrecuencia = ".$this->getFrecuencia()."");
 		$indice = $rs->fields['indice'] == ''?0:$rs->fields['indice'];
 		
 		$rs = $db->Execute("select * from objetivo where idObjetivo = ".$this->getObjetivo());

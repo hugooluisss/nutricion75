@@ -27,17 +27,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtCarbohidratos" class="col-lg-2">Tipo de actividad</label>
-						<div class="col-lg-3">
-							<select id="selTipo" name="selTipo" class="form-control">
-								<option value="">Selecciona una</option>
-								{foreach from=$actividades item="row"}
-									<option value="{$row.idTipo}">{$row.nombre}</option>
-								{/foreach}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="selProteinas" class="col-lg-2">Proteinas</label>
 						<div class="col-lg-3">
 							<select id="selProteinas" name="selProteinas" class="form-control">
