@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-28 12:15:30
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-04 00:33:28
          compiled from "templates/plantillas/modulos/actividades/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21139374595789783e43c577-77780674%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '590e93f85ba881c075727dcb5e9a40cdca0c6862' => 
     array (
       0 => 'templates/plantillas/modulos/actividades/lista.tpl',
-      1 => 1469725569,
+      1 => 1470288800,
       2 => 'file',
     ),
   ),
@@ -31,9 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Tipo</th>
-					<th>Proteinas</th>
 					<th>Grasa</th>
+					<th>Proteinas</th>
 					<th>Carbohidratos</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -45,16 +44,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
-						<td style="border-left: 5px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['idActividad'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idActividad'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['tipoActividad'];?>
-</td>
-						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['proteinas'];?>
- %</td>
 						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['grasas'];?>
+ %</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['proteinas'];?>
  %</td>
 						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['carbohidratos'];?>
  %</td>

@@ -181,7 +181,6 @@ class TActividad{
 	*/
 	
 	public function guardar(){
-		if ($this->getTipo() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){

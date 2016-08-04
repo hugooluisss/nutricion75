@@ -39,7 +39,7 @@ class TMomento{
 	* @return boolean True si se realizó sin problemas
 	*/
 	public function setId($fecha = '', $cliente = ''){
-		if ($fecha == '') date("Y-m-d");
+		if ($fecha == '') $fecha = date("Y-m-d");
 		if ($cliente == '') return false;
 		
 		$db = TBase::conectaDB();
@@ -226,7 +226,7 @@ class TMomento{
 				peso = ".$this->getPeso().",
 				idFrecuencia = ".$this->getFrecuencia().",
 				idObjetivo = ".$this->getObjetivo().",
-				idActividad = ".$this->actividad->getId()."
+				idActividad = ".($this->actividad->getId() == ''?0:$this->actividad->getId())."
 			WHERE fecha = '".$this->getFecha()."' and idCliente = ".$this->cliente->getId());
 			
 		return $rs?true:false;
@@ -314,7 +314,7 @@ class TMomento{
 		
 		$mbr = $this->getMBR() == ''?0:$this->getMBR();
 		
-		$rs = $db->Execute("select b.indice from frecuencia b where a.idFrecuencia = ".$this->getFrecuencia()."");
+		$rs = $db->Execute("select b.indice from frecuencia b where b.idFrecuencia = ".$this->getFrecuencia()."");
 		$indice = $rs->fields['indice'] == ''?0:$rs->fields['indice'];
 		
 		$rs = $db->Execute("select * from objetivo where idObjetivo = ".$this->getObjetivo());

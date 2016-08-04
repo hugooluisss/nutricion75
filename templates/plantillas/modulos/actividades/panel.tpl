@@ -27,22 +27,22 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selProteinas" class="col-lg-2">Proteinas</label>
+						<label for="selGrasas" class="col-lg-2">Grasas</label>
 						<div class="col-lg-3">
-							<select id="selProteinas" name="selProteinas" class="form-control">
+							<select id="selGrasas" name="selGrasas" class="form-control">
 								<option value="">Selecciona un porcentaje</option>
-								{for $i=10 to 100 step 10}
+								{for $i=10 to 100 step 5}
 									<option value="{$i}">{$i} %</option>
 								{/for}
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selGrasas" class="col-lg-2">Grasas</label>
+						<label for="selProteinas" class="col-lg-2">Proteinas</label>
 						<div class="col-lg-3">
-							<select id="selGrasas" name="selGrasas" class="form-control">
+							<select id="selProteinas" name="selProteinas" class="form-control">
 								<option value="">Selecciona un porcentaje</option>
-								{for $i=10 to 100 step 10}
+								{for $i=10 to 100 step 5}
 									<option value="{$i}">{$i} %</option>
 								{/for}
 							</select>
@@ -53,7 +53,7 @@
 						<div class="col-lg-3">
 							<select id="selCarbohidratos" name="selCarbohidratos" class="form-control">
 								<option value="">Selecciona un porcentaje</option>
-								{for $i=10 to 100 step 10}
+								{for $i=10 to 100 step 5}
 									<option value="{$i}">{$i} %</option>
 								{/for}
 							</select>

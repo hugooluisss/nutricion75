@@ -11,7 +11,7 @@ $(document).ready(function(){
 		errorClass: "validateError",
 		rules: {
 			txtNombre: "required",
-			setGrasas: {
+			selGrasas: {
 				required : true
 			},
 			selProteinas: {

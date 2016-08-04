@@ -75,7 +75,11 @@ switch($objModulo->getId()){
 				$data['nombre'] = $cliente->getNombre();
 				$data['fecha'] = $cliente->getFechaUltimaActualizacion();
 				$data['objetivo'] = $cliente->getObjetivo();
-				//$data['calorias'] = $cliente->getCalorias();
+				$data['calorias'] = $cliente->getCalorias();
+				$actividad = new TActividad($cliente->getActividad());
+				$data['idActividad'] = $actividad->getId();
+				$data['nombreActividad'] = $actividad->getNombre();
+				
 				$db = TBase::conectaDB();
 				$rs = $db->Execute("select nombre from frecuencia where idFrecuencia = ".$data['idFrecuencia']);
 				$data['nombreFrecuencia'] = $rs->fields['nombre'];
@@ -167,7 +171,7 @@ switch($objModulo->getId()){
 			case 'addMomento':
 				$momento = new TMomento;
 				
-				$momento->setId();
+				$momento->setId('', $_POST['']);
 				$momento->setFecha($_POST['fecha']);
 				$momento->cliente->setId($_POST['cliente']);
 				$momento->setAltura($_POST['altura']);
@@ -182,17 +186,26 @@ switch($objModulo->getId()){
 					$cliente->guardar();
 				}
 				
-				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad(), "calorias" => $momento->getCalorias()));
+				echo json_encode(array(
+					"band" => $momento->guardar(), 
+					"MBR" => $momento->getMBR(), 
+					"PGCE" => $momento->getPGCE(), 
+					"magro" => $momento->getObesidad(), 
+					"calorias" => $momento->getCalorias()));
 			break;
 			case 'setActividad':
 				$momento = new TMomento();
-				$momento->setCliente($_POST['cliente']);
-				$momento = new TMomento($this->getUltimoMomento(), $this->getId());
+				$momento->cliente->setId($_POST['cliente']);
 				$momento->setId($momento->cliente->getUltimoMomento(), $_POST['cliente']);
 				
-				$momento->setActividad($_POST['actividad']);
+				$momento->actividad->setId($_POST['actividad']);
 				
-				echo json_encode(array("band" => $momento->guardar(), "MBR" => $momento->getMBR(), "PGCE" => $momento->getPGCE(), "magro" => $momento->getObesidad(), "calorias" => $momento->getCalorias()));
+				echo json_encode(array(
+					"band" => $momento->guardar(), 
+					"MBR" => $momento->getMBR(), 
+					"PGCE" => $momento->getPGCE(), 
+					"magro" => $momento->getObesidad(), 
+					"calorias" => $momento->getCalorias()));
 			break;
 		}
 	break;

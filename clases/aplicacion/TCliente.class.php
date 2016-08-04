@@ -101,20 +101,11 @@ class TCliente{
 		return $this->getUltimoMomento();
 	}
 	
-	public function getTipoActividad(){
-		if ($this->getId() == '') return false;
-		
-		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
-		$actividad = new TActividad($momento->getActividad());
-		
-		return $actividad->getTipo();
-	}
-	
 	public function getActividad(){
 		if ($this->getId() == '') return false;
 		
 		$momento = new TMomento($this->getUltimoMomento(), $this->getId());
-		return $momento->getActividad();
+		return $momento->actividad->getId();
 	}
 	
 	public function getFrecuencia(){

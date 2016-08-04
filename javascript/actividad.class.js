@@ -1,7 +1,7 @@
 TActividad = function(){
 	var self = this;
 	
-	this.add = function(id, nombre, jgrasas, proteinas, carbohidratos, fn){
+	this.add = function(id, nombre, grasas, proteinas, carbohidratos, fn){
 		if (fn.before !== undefined) fn.before();
 		
 		$.post('cactividades', {

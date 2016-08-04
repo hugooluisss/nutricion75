@@ -1,18 +1,6 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
-	case 'actividades':
-		$db = TBase::conectaDB();
-		global $sesion;
-		
-		$rs = $db->Execute("select * from tipoactividad");
-		$datos = array();
-		while(!$rs->EOF){
-			array_push($datos, $rs->fields);
-			$rs->moveNext();
-		}
-		$smarty->assign("actividades", $datos);
-	break;
 	case 'listaActividades':
 		$db = TBase::conectaDB();
 		global $sesion;
