@@ -200,4 +200,28 @@ $conf['listaObjetivos'] = array(
 	'descripcion' => 'Lista de objetivos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+#Plantilla del menú
+$conf['menuPlantilla'] = array(
+	'controlador' => 'plantilla.php',
+	'vista' => 'menuPlantilla/panel.tpl',
+	'descripcion' => 'Definición de la plantilla del menú por default',
+	'seguridad' => true,
+	'js' => array('plantilla.class.js'),
+	'jsTemplate' => array('plantillas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaAlimentosPlantilla'] = array(
+	'controlador' => 'plantilla.php',
+	'vista' => 'menuPlantilla/lista.tpl',
+	'descripcion' => 'Lista de alimentos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cplantilla'] = array(
+	'controlador' => 'plantilla.php',
+	'descripcion' => 'Controlador de alimentos de la plantilla',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 ?>

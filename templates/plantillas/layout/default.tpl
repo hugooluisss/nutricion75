@@ -117,6 +117,14 @@
 							<li {if $PAGE.modulo eq 'actividades'}class="active"{/if}><a href="actividades"><i class="fa fa-bicycle"></i> Actividades</a></li>
 						</ul>
 					</li>
+					<li class="{if in_array($PAGE.modulo, array('menuPlantilla'))}active{/if} treeview">
+						<a href="#">
+							<span>Menús</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'menuPlantilla'}class="active"{/if}><a href="menuPlantilla"><i class="fa fa-coffee"></i> Menú</a></li>
+						</ul>
+					</li>
 					{/if}
 				</ul>
 			</section>

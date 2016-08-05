@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-07-15 18:34:48
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-04 22:14:24
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2892515405779d4757b0160-13665111%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1468625682,
+      1 => 1470366862,
       2 => 'file',
     ),
   ),
@@ -161,6 +161,14 @@ plugins/upload/css/jquery.fileupload.css">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="clientes"><i class="fa fa-male"></i> Clientes</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='alimentos'){?>class="active"<?php }?>><a href="alimentos"><i class="fa fa-coffee"></i> Alimentos</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='actividades'){?>class="active"<?php }?>><a href="actividades"><i class="fa fa-bicycle"></i> Actividades</a></li>
+						</ul>
+					</li>
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('menuPlantilla'))){?>active<?php }?> treeview">
+						<a href="#">
+							<span>Menús</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='menuPlantilla'){?>class="active"<?php }?>><a href="menuPlantilla"><i class="fa fa-coffee"></i> Menú</a></li>
 						</ul>
 					</li>
 					<?php }?>
