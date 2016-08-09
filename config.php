@@ -1,5 +1,5 @@
 <?php
-define('SISTEMA', 'Armoni House');
+define('SISTEMA', '75%');
 define('VERSION', 'v 1.0');
 define('ALIAS', '');
 define('AUTOR', 'Hugo Luis Santiago Altamirano');
@@ -224,4 +224,31 @@ $conf['cplantilla'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
+#Menú
+$conf['listaComidas'] = array(
+	'controlador' => 'menus.php',
+	'vista' => 'menuPlantilla/lista.tpl',
+	'descripcion' => 'Lista de comidas (desayuno, comida, cena, etc)',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaMenu'] = array(
+	'controlador' => 'menus.php',
+	'vista' => 'menuPlantilla/lista.tpl',
+	'descripcion' => 'Lista de comidas (desayuno, comida, cena, etc)',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+$conf['listaAlimentosMenu'] = array(
+	'controlador' => 'menus.php',
+	'vista' => 'menu/listaAlimentos.tpl',
+	'descripcion' => 'Lista de comidas (desayuno, comida, cena, etc)',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cmenus'] = array(
+	'controlador' => 'menus.php',
+	'descripcion' => 'Controlador de actividades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

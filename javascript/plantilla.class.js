@@ -29,4 +29,18 @@ TPlantilla = function(){
 			}
 		}, "json");
 	};
+	
+	this.setPosicion = function(id, posicion, fn){
+		$.post('cplantilla', {
+			"alimento": id,
+			"posicion": posicion,
+			"action": "setPosicion"
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+			if (data.band == 'false'){
+				console.log("No se actualizó la posición");
+			}
+		}, "json");
+	};
 };

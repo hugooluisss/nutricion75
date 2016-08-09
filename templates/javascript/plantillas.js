@@ -5,6 +5,7 @@ $(document).ready(function(){
 		source: 'index.php?mod=cplantilla&action=getAlimentos',
 		select: function(event, ui) {
 			$("#id").val(ui.item.id);
+			$("#txtCantidad").focus();
         }
     });
 	
@@ -48,23 +49,51 @@ $(document).ready(function(){
 			$("#dvLista").find("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idActividad);
-				$("#txtNombre").val(el.nombre);
-				$("#selGrasas").val(el.grasas);
-				$("#selProteinas").val(el.proteinas);
-				$("#selCarbohidratos").val(el.carbohidratos);
-				
-				$('.nav a[href="#add"]').tab('show');
+				var cantidad = prompt("¿Cual es la nueva cantidad?", el.cantidad);
+				if (isNaN(cantidad) || cantidad == '')
+					alert("Esto no es un número");
+				else{
+					var obj = new TPlantilla;
+					obj.add(el.idAlimento, cantidad, {
+						after: function(data){
+							if (data.band == false){
+								alert("No se pudo guardar la cantidad de alimento");
+							}else{
+								$("#frmAdd").get(0).reset();
+								getLista();
+							}
+						}
+					});
+				}
+					
 			});
 			
 			$("#dvLista").find("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TActividad;
+					var obj = new TPlantilla;
 					obj.del($(this).attr("identificador"), {
 						after: function(data){
 							if (data.band == false)
-								alert("Ocurrió un error al eliminar la actividad");
+								alert("Ocurrió un error al eliminar el alimento de la lista");
 							getLista();
+						}
+					});
+				}
+			});
+			
+			$("#dvLista").find(".posicion").click(function(){
+				var posicion = prompt("¿Cual es la nueva posición?", $(this).html());
+				if (isNaN(posicion) || posicion == '')
+					alert("Esto no es un número");
+				else{
+					var obj = new TPlantilla;
+					obj.setPosicion($(this).attr("identificador"), posicion, {
+						after: function(data){
+							if (data.band == false){
+								alert("No se pudo guardar la nueva posicion");
+							}else{
+								getLista();
+							}
 						}
 					});
 				}

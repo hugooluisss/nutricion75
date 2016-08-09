@@ -13,11 +13,11 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("lista", $datos);
+		$smarty->assign("json", $datos);
 	break;
 	case 'calimentos':
 		switch($objModulo->getAction()){
 			case 'add':
-				$db = TBase::conectaDB();
 				$obj = new TAlimento();
 				
 				$obj->setId($_POST['id']);

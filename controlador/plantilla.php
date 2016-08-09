@@ -23,8 +23,8 @@ switch($objModulo->getId()){
 				echo json_encode(array("band" => $obj->agregar($_POST['alimento'], $_POST['cantidad'])));
 			break;
 			case 'del':
-				$obj = new TAlimento($_POST['alimento']);
-				echo json_encode(array("band" => $obj->eliminar()));
+				$obj = new TPlantilla();
+				echo json_encode(array("band" => $obj->eliminar($_POST['alimento'])));
 			break;
 			case 'getAlimentos':
 				$db = TBase::conectaDB();
@@ -35,6 +35,10 @@ switch($objModulo->getId()){
 					$rs->moveNext();
 				}
 				echo json_encode($datos);
+			break;
+			case 'setPosicion':
+				$obj = new TPlantilla();
+				echo json_encode(array("band" => $obj->setPosicion($_POST['alimento'], $_POST['posicion'])));
 			break;
 		}
 	break;
