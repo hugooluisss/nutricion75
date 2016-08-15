@@ -135,6 +135,8 @@ class TMenu{
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("insert into menualimento(idMenu, idAlimento, cantidad) values (".$this->getId().", ".$alimento.", ".$cantidad.")");
 		
+		$this->getItems();
+		
 		return $rs?true:false;
 	}
 	
@@ -198,11 +200,80 @@ class TMenu{
 				"carbohidratos" => $el->getCarbohidratos(),
 				"proteinas" => $el->getGrasas(),
 				"fibra" => $el->getFibra(),
+				"grasas" => $el->getGrasas(),
 				"cantidad" => $el->cantidad
 			));
 		}
 		
 		return $datos;
+	}
+	
+	/**
+	* Retorna la cantidad de calorias
+	*
+	* @autor Hugo
+	* @access public
+	* @return float Total de calorias
+	*/
+	public function getCalorias(){
+		$total = 0;
+		
+		foreach($this->items as $el){
+			$total += $el->getCarbohidratos() * $el->cantidad * 4 + $el->getProteinas() * 4 * $el->cantidad + $el->getGrasas() * 9 * $el->cantidad;
+		}
+		
+		return $total;
+	}
+	
+	/**
+	* Retorna la cantidad de calorias en proteinas
+	*
+	* @autor Hugo
+	* @access public
+	* @return float Total de calorias
+	*/
+	public function getCaloriasProteinas(){
+		$total = 0;
+		
+		foreach($this->items as $el){
+			$total += $el->getProteinas() * $el->cantidad * 4 + $el->getProteinas();
+		}
+		
+		return $total;
+	}
+	
+	/**
+	* Retorna la cantidad de calorias en carbohidratos
+	*
+	* @autor Hugo
+	* @access public
+	* @return float Total de calorias
+	*/
+	public function getCaloriasCarbohidratos(){
+		$total = 0;
+		
+		foreach($this->items as $el){
+			$total += $el->getCarbohidratos() * $el->cantidad * 4 + $el->getProteinas();
+		}
+		
+		return $total;
+	}
+	
+	/**
+	* Retorna la cantidad de calorias en grasas
+	*
+	* @autor Hugo
+	* @access public
+	* @return float Total de calorias
+	*/
+	public function getCaloriasGrasas(){
+		$total = 0;
+		
+		foreach($this->items as $el){
+			$total += $el->getGrasas() * $el->cantidad * 9 + $el->getProteinas();
+		}
+		
+		return $total;
 	}
 };
 ?>

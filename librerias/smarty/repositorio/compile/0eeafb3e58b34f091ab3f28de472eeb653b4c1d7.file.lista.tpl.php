@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-08 23:25:43
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-15 13:09:16
          compiled from "templates/plantillas/modulos/menuPlantilla/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:192812867357a419a92109b1-41922748%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0eeafb3e58b34f091ab3f28de472eeb653b4c1d7' => 
     array (
       0 => 'templates/plantillas/modulos/menuPlantilla/lista.tpl',
-      1 => 1470716737,
+      1 => 1471284552,
       2 => 'file',
     ),
   ),
@@ -71,7 +71,7 @@ g</small></td>
 	</tbody>
 	<tfoot>
 		<tr>
-			<th colspan="4" style="text-align:right">Total:</th>
+			<th colspan="5" style="text-align:right">Total:</th>
 			<th class="text-right"><?php echo $_smarty_tpl->tpl_vars['gramos']->value;?>
  g</th>
 			<th></th>

@@ -143,7 +143,8 @@ class TPlantilla{
 				"nombre" => $el->getNombre(),
 				"idAlimento" => $el->getId(),
 				"carbohidratos" => $el->getCarbohidratos(),
-				"proteinas" => $el->getGrasas(),
+				"proteinas" => $el->getProteinas(),
+				"grasas" => $el->getGrasas(),
 				"fibra" => $el->getFibra(),
 				"cantidad" => $el->cantidad
 			));
