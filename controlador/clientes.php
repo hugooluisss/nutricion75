@@ -207,6 +207,18 @@ switch($objModulo->getId()){
 					"magro" => $momento->getObesidad(), 
 					"calorias" => $momento->getCalorias()));
 			break;
+			case 'getPeso':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select fecha, peso from momento where fecha > '".(date("Y")-1)."-".date("m-d")."'");
+				
+				$datos = array();
+				while (!$rs->EOF){
+					array_push($datos, $rs->fields);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }
