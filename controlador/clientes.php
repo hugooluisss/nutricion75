@@ -221,5 +221,17 @@ switch($objModulo->getId()){
 			break;
 		}
 	break;
+	case 'csuscripcion':
+		switch($objModulo->getAction()){
+			case 'getSuscripcion':
+				$usuario = new TCliente($_POST['id']);
+				
+				if ($usuario->isSuscripto())
+					echo json_encode(array("band" => "true"));
+				else
+					echo json_encode(array("band" => "false"));
+			break;
+		}
+	break;
 }
 ?>

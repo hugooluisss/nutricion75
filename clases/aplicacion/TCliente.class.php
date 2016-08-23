@@ -175,5 +175,23 @@ class TCliente{
 		$interval = $datetime1->diff($datetime2);
 		return $interval->format('%y');
 	}
+	
+	/**
+	* Indica si el usuario esta suscripto
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True Si es que si lo está
+	*/
+	
+	public function isSuscripto(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select * from suscripcion where idCliente = ".$this->getId()." and now() between inicio and fin");
+		
+		return !$rs->EOF?true:false;
+	}
+
 }
 ?>

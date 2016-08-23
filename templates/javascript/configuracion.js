@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("input[clave]").change(function(){
+	$("input[clave], textarea[clave]").change(function(){
 		var el = $(this);
 		el.prop("disabled", true);
 		

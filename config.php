@@ -251,4 +251,10 @@ $conf['cmenus'] = array(
 	'descripcion' => 'Controlador de actividades',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['csuscripcion'] = array(
+	'controlador' => 'clientes.php',
+	'descripcion' => 'Controlador de suscripciones',
+	'seguridad' => false,
+	'capa' => LAYOUT_AJAX);
 ?>

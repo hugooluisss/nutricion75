@@ -19,6 +19,12 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => true));
 			break;
+			case 'get':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select valor from configuracion where clave = '".$_POST['campo']."'");
+				
+				echo json_encode(array("valor" => $rs->fields['valor']));
+			break;
 		}
 	break;
 }
