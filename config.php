@@ -257,4 +257,10 @@ $conf['csuscripcion'] = array(
 	'descripcion' => 'Controlador de suscripciones',
 	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
+
+$conf['cusuarios2'] = array(
+	'controlador' => 'usuarios.php',
+	'descripcion' => 'Controlador de usuarios',
+	'seguridad' => false,
+	'capa' => LAYOUT_AJAX);
 ?>

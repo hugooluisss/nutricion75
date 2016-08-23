@@ -98,5 +98,15 @@ switch($objModulo->getId()){
 			break;
 		}
 	break;
+	case 'cusuarios2':
+		switch($objModulo->getAction()){
+			case 'uploadImagenPerfil':
+				if (file_exists("repositorio/imagenesUsuarios/img_".$_POST['identificador'].".jpg"))
+					unlink("repositorio/imagenesUsuarios/img_".$_POST['identificador'].".jpg");
+					
+				move_uploaded_file($_FILES["file"]["tmp_name"], "repositorio/imagenesUsuarios/img_".$_POST['identificador'].".jpg");
+			break;
+		}
+	break;
 }
 ?>
