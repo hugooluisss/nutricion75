@@ -101,7 +101,7 @@ $conf['configuracion'] = array(
 $conf['cconfiguracion'] = array(
 	'controlador' => 'configuracion.php',
 	'descripcion' => 'Controlador de configuración del sistema',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 	
 /* Clientes */

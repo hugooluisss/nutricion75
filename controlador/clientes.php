@@ -209,7 +209,7 @@ switch($objModulo->getId()){
 			break;
 			case 'getPeso':
 				$db = TBase::conectaDB();
-				$rs = $db->Execute("select fecha, peso from momento where fecha > '".(date("Y")-1)."-".date("m-d")."'");
+				$rs = $db->Execute("select fecha, peso from momento where fecha > '".(date("Y")-1)."-".date("m-d")."' and idCliente = ".$_POST['id']);
 				
 				$datos = array();
 				while (!$rs->EOF){
