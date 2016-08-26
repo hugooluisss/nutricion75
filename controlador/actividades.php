@@ -46,6 +46,16 @@ switch($objModulo->getId()){
 				$obj = new TActividad($_POST['id']);
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'getData':
+				$obj = new TActividad($_POST['id']);
+				
+				$data = array();
+				$data['grasas'] = $obj->getGrasas();
+				$data['proteinas'] = $obj->getProteinas();
+				$data['carbohidratos'] = $obj->getCarbohidratos();
+				
+				echo json_encode($data);
+			break;
 		}
 	break;
 

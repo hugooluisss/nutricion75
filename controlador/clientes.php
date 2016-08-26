@@ -109,6 +109,29 @@ switch($objModulo->getId()){
 
 				echo json_encode(array("band" => $resp));
 			break;
+			case 'save':
+				$db = TBase::conectaDB();
+				$obj = new TCliente();
+				
+				$obj->setId($_POST['id']);
+				$obj->setNombre($_POST['nombre']);
+				$obj->setEmail($_POST['email']);
+				$obj->setSexo($_POST['sexo']);
+				
+				$resp = $obj->guardar();
+
+				echo json_encode(array("band" => $resp));
+			break;
+			case 'setPass':
+				global $sesion;
+				
+				$obj = new TCliente();
+				$obj->setId($_POST['usuario']);
+				$obj->setPass($_POST['pass']);
+				
+				echo json_encode(array("band" => $obj->guardar()));
+			break;
+
 			case 'actualizarNacimiento':
 				$obj = new TCliente();
 				
