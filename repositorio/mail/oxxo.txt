@@ -1,0 +1,8 @@
+Hola [*cliente.nombre*]:
+<br />
+
+<p>El motivo de este correo es para entregarle el código de barras para generar el pago de la renovación de la suscripción a través de las tiendas OXXO, a continuación el código</p>
+
+<p><center><img src="[*barcode*]"/></center></p>
+
+<p>Cualquier duda que tenga comuniquese con nosotros</p>

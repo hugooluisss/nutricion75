@@ -1,0 +1,6 @@
+Hola [*cliente.nombre*]:
+<br />
+
+<p>Muchas gracias por renovar su suscripción con nosotros, está queda activa a partir del dia [*momento*] y tiene una caducidad de un mes</p>
+
+<p>Cualquier duda que tenga comuniquese con nosotros</p>

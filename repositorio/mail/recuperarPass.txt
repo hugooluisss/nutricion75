@@ -6,4 +6,4 @@ Hola [*cliente.nombre*]:
 <p><b>Usuario: </b>[*cliente.correo*]<br />
 <b>Contraseña: </b>[*cliente.pass*]</p>
 
-<p>Cualquier duda que tengas no dudes en comunicarte con nosotros</p>
+<p>Cualquier duda que tenga comuniquese con nosotros</p>

@@ -263,4 +263,10 @@ $conf['cusuarios2'] = array(
 	'descripcion' => 'Controlador de usuarios',
 	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['cpagos'] = array(
+	'controlador' => 'pagos.php',
+	'descripcion' => 'Controlador de pagos',
+	'seguridad' => false,
+	'capa' => LAYOUT_AJAX);
 ?>

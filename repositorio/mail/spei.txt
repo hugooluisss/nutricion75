@@ -1,0 +1,8 @@
+Hola [*cliente.nombre*]:
+<br />
+
+<p>El motivo de este correo es para entregarle la clabe SPEI para generar el pago de la renovación de la suscripción, a continuación los datos del pago</p>
+
+<p><b>CLABE: </b>[*clabe*]</p>
+
+<p>Cualquier duda que tenga comuniquese con nosotros</p>
