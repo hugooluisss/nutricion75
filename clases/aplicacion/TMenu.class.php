@@ -133,8 +133,15 @@ class TMenu{
 			if (!$this->crear()) return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("insert into menualimento(idMenu, idAlimento, cantidad) values (".$this->getId().", ".$alimento.", ".$cantidad.")");
+		$rs = $db->Execute("select idAlimento from menualimento where idMenu = ".$this->getId()." and idAlimento = ".$alimento);
 		
+		if ($rs->EOF)
+			$rs = $db->Execute("insert into menualimento(idMenu, idAlimento, cantidad) values (".$this->getId().", ".$alimento.", ".$cantidad.")");
+		else
+			return false;
+		
+		#$rs = $db->Execute("update menualimento set cantidad = cantidad + ".$cantidad." where idMenu = ".$this->getId()." and idAlimento = ".$alimento);
+			
 		$this->getItems();
 		
 		return $rs?true:false;
@@ -236,7 +243,7 @@ class TMenu{
 		$total = 0;
 		
 		foreach($this->items as $el){
-			$total += $el->getProteinas() * $el->cantidad * 4 + $el->getProteinas();
+			$total += $el->getProteinas() * $el->cantidad * 4; // + $el->getProteinas();
 		}
 		
 		return $total;
@@ -253,7 +260,7 @@ class TMenu{
 		$total = 0;
 		
 		foreach($this->items as $el){
-			$total += $el->getCarbohidratos() * $el->cantidad * 4 + $el->getProteinas();
+			$total += $el->getCarbohidratos() * $el->cantidad * 4; // + $el->getProteinas();
 		}
 		
 		return $total;
@@ -270,7 +277,7 @@ class TMenu{
 		$total = 0;
 		
 		foreach($this->items as $el){
-			$total += $el->getGrasas() * $el->cantidad * 9 + $el->getProteinas();
+			$total += $el->getGrasas() * $el->cantidad * 9;// + $el->getProteinas();
 		}
 		
 		return $total;

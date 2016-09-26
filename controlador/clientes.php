@@ -249,10 +249,12 @@ switch($objModulo->getId()){
 			case 'getSuscripcion':
 				$usuario = new TCliente($_POST['id']);
 				
-				if ($usuario->isSuscripto())
-					echo json_encode(array("band" => "true"));
+				if ($usuario->getId() == '')
+					echo json_encode(array("band" => -1));
+				else if ($usuario->isSuscripto())
+					echo json_encode(array("band" => 1));
 				else
-					echo json_encode(array("band" => "false"));
+					echo json_encode(array("band" => 0));
 			break;
 		}
 	break;

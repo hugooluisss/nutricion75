@@ -72,36 +72,74 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => $obj->delAlimento($_POST['alimento'])));
 			break;
+			case 'cambiarAlimento':
+				$obj = new TMenu();
+				$obj->setIdByComidaCliente($_POST['comida'], $_POST['cliente']);
+				$obj->delAlimento($_POST['alimento']);
+				
+				echo json_encode(array("band" => $obj->addAlimento($_POST['cambio'], $_POST['cantidad'])));
+			break;
 			case 'setPlantilla':
 				$plantilla = new TPlantilla;
+				$db = TBase::conectaDB();
 				
-				$menu = new TMenu();
-				$menu->setIdByComidaCliente($_POST['comida'], $_POST['cliente']);
-				$aumento = 200;
+				if ($_POST['comida'] == null){
+					$rs = $db->Execute("select * from comida");
+					$comidas = array();
+					while(!$rs->EOF){
+						array_push($comidas, $rs->fields['idComida']);
+						$rs->moveNext();
+					}
+				}else
+					$comidas = array($_POST['comida']);
 				
-				foreach($plantilla->getItemsArray() as $el){
-					$menu->addAlimento($el['idAlimento'], $el['cantidad']);
+				foreach($comidas as $comida){
+					$menu = new TMenu();
+					$menu->setIdByComidaCliente($comida, $_POST['cliente']);
+					$aumento = 60;
+					$calorias = $menu->cliente->getCalorias() / 5;
+					$mensaje = "";
+					$cont = 0;
 					
-					if ($menu->cliente->getCalorias() / 5 + $aumento <= $menu->getCalorias()){
-						$menu->delAlimento($el['idAlimento']);
-					}else{
-						#Se va a analizar ahora por el tipo de actividad
-						$momento = new TMomento($menu->cliente->getFechaUltimaActualizacion(), $menu->cliente->getId());
-						$mensaje = "";
-						$carbohidratos = $momento->actividad->getCarbohidratos() / 100;
-						if ($menu->getCaloriasCarbohidratos() * $carbohidratos + $aumento <= $menu->getCalorias() * $carbohidratos)
-							$mensaje += "El producto supera los límites de calorías en carbohidratos<br />";
+					$momento = new TMomento($menu->cliente->getFechaUltimaActualizacion(), $menu->cliente->getId());
+					
+					
+					#esto me lo convierte en macros
+					$carbohidratos = $calorias * $momento->actividad->getCarbohidratos() / 100;
+					$proteinas = $calorias * $momento->actividad->getProteinas() / 100;
+					$grasas = $calorias * $momento->actividad->getGrasas() / 100;
+					
+					foreach($plantilla->getItemsArray() as $el){
+						$cont++;
+						if (!$bandPasa){
+							$menu->addAlimento($el['idAlimento'], $el['cantidad']);
+							$bandPasa = false;
 							
-						$proteinas = $momento->actividad->getProteinas() / 100;
-						if ($menu->getCaloriasProteinas() * $proteinas + $aumento <= $menu->getCalorias() * $proteinas)
-							$mensaje += "El producto supera los límites de calorías en proteinas<br />";
+							if ($menu->getCaloriasCarbohidratos() + 30 >= $carbohidratos){
+								$bandPasa = true;
+								#echo "carbohidratos ".$el['nombre']." ".($menu->getCaloriasCarbohidratos()/4)." ".$carbohidratos." ";
+							}
+								
+							if ($menu->getCaloriasProteinas() + 30 >= $proteinas){
+								$bandPasa = true;
+								#echo "proteinas ";
+							}
 							
-						$grasas = $momento->actividad->getGrasas() / 100;
-						if ($menu->getCaloriasGrasas() * $grasas + $aumento <= $menu->getCalorias() * $grasas)
-							$mensaje += "El producto supera los límites de calorías en grasas<br />";
-						
-						if ($mensaje != '')
-							$menu->delAlimento($el['idAlimento']);
+							if ($menu->getCaloriasGrasas() + 50 >= $grasas){
+								$bandPasa = true;
+								#echo "grasas ";
+							}
+							
+							//echo $menu->getCaloriasCarbohidratos()." - ".$carbohidratos."  ";
+							//echo $menu->getCaloriasProteinas()." - ".$proteinas."  ";
+							//echo $menu->getCaloriasGrasas()." - ".$grasas."  ";
+							
+							if ($bandPasa){
+								#echo $el['idAlimento']."    ".$cont;
+								$bandPasa = false;
+								$menu->delAlimento($el['idAlimento']);
+							}
+						}
 					}
 				}
 				

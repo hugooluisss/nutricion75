@@ -18,7 +18,7 @@ class TCliente{
 		
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select * from cliente where idCliente = ".$id);
-		
+
 		foreach($rs->fields as $field => $val)
 			switch($field){
 				default:
